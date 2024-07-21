@@ -11,7 +11,11 @@ import SwiftData
 @main
 struct dev_ex_iosApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @State var isLaunching = true
+    @StateObject var theme = ThemeState(
+        font: defaultFontTheme(),
+        color: defaultColorTheme()
+    )
+    @State private var isLaunching = true
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -30,15 +34,16 @@ struct dev_ex_iosApp: App {
         WindowGroup {
             if isLaunching {
                 LaunchScreenView()
-                    .onAppear {
+                    .transition(.opacity.animation(.default))
+                    .onViewDidLoad {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             isLaunching = false
                         }
                     }
-                    .transition(.opacity.animation(.default))
             } else {
                 ContentView()
                     .transition(.opacity.animation(.default))
+                    .environmentObject(theme)
             }
         }
         .modelContainer(sharedModelContainer)

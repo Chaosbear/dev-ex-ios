@@ -55,22 +55,6 @@ extension View {
     }
 }
 
-// MARK: - Lock Orientation
-// extension View {
-//
-//    @ViewBuilder
-//    func forceRotation(orientation: UIInterfaceOrientationMask) -> some View {
-//        onAppear {
-//            AppDelegate.orientationLock = orientation
-//        }
-//
-//        onDisappear {
-//            // // Reset orientation to previous setting
-//            AppDelegate.orientationLock = AppDelegate.orientationLock // current orientation
-//        }
-//    }
-// }
-
 extension View {
     func onSwipeRightDismissNavigationDestination(action: @escaping () -> Void) -> some View {
         self.gesture(
@@ -336,26 +320,6 @@ private extension PositionObservingView {
 
         static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {}
     }
-}
-
-// MARK: - Workarounds
-
-extension View {
-    /// In some occasion on Xcode 12.5 and iOS 14.5, transition (animation) doesn't work when a view is in root.
-    ///
-    func stabilizeElementTransitionInRootViewWorkaround() -> some View {
-        ZStack { self }
-    }
-
-    /// Currently in Xcode 13.2 and iOS 15.2, setting toolbar's accent color doesn't work cleanly with UIKit API. However, SwiftUI's accent color can be set on toolbars without a problem. Mark this method where using UIKit API is intended but requires a workaround.
-    ///
-    func toolbarAccentWorkaround(_ color: Color) -> some View {
-        accentColor(color)
-    }
-
-    /// This workaround keep the back button when some content is set on toolbar ": https://stackoverflow.com/a/64994154/2549792
-    ///
-    var navBackButtonKeeperWorkaround: Text { Text("") }
 }
 
 extension View {
