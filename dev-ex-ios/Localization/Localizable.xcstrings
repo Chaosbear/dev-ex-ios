@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "A" : {
+
+    },
     "Add Item" : {
       "localizations" : {
         "en" : {
@@ -34,6 +37,7 @@
       }
     },
     "Select an item" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

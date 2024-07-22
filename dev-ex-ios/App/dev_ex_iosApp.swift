@@ -10,13 +10,20 @@ import SwiftData
 
 @main
 struct dev_ex_iosApp: App {
+    // MARK: - Property
+    // appDelegate adapter
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
+    // theme
     @StateObject var theme = ThemeState(
         font: defaultFontTheme(),
         color: defaultColorTheme()
     )
-    @State private var isLaunching = true
 
+    // router
+    @StateObject var router: Router = Router.shared
+
+    // swift data
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -30,6 +37,11 @@ struct dev_ex_iosApp: App {
         }
     }()
 
+    // other
+    @State private var isLaunching = true
+
+
+    // MARK: - UI Body
     var body: some Scene {
         WindowGroup {
             if isLaunching {
@@ -41,15 +53,18 @@ struct dev_ex_iosApp: App {
                         }
                     }
             } else {
-                ContentView()
-                    .transition(.opacity.animation(.default))
-                    .environmentObject(theme)
+                RouterView(router: router) {
+                    ContentView()
+                }
+                .transition(.opacity.animation(.default))
+                .environmentObject(theme)
             }
         }
         .modelContainer(sharedModelContainer)
     }
 }
 
+// MARK: - App Delegate
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         return true
