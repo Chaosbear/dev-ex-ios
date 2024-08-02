@@ -1,5 +1,5 @@
 //
-//  DynamicFont.swift
+//  FontExtension.swift
 //  dev-ex-ios
 //
 //  Created by Sukrit Chatmeeboon on 14/7/2567 BE.

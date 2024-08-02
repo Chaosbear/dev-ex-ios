@@ -21,7 +21,7 @@ struct dev_ex_iosApp: App {
     )
 
     // router
-    @StateObject var router: Router = Router.shared
+    @StateObject var mainRouter: Router = Router.main
 
     // swift data
     var sharedModelContainer: ModelContainer = {
@@ -48,18 +48,19 @@ struct dev_ex_iosApp: App {
                 LaunchScreenView()
                     .transition(.opacity.animation(.default))
                     .onViewDidLoad {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             isLaunching = false
                         }
                     }
             } else {
-                RouterView(router: router) {
+                RouterView(router: mainRouter) {
                     ContentView()
                 }
                 .transition(.opacity.animation(.default))
-                .environmentObject(theme)
             }
         }
+        .environmentObject(theme)
+        .environmentObject(mainRouter)
         .modelContainer(sharedModelContainer)
     }
 }

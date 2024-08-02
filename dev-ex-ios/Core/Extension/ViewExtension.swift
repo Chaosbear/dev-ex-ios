@@ -235,6 +235,31 @@ extension View {
             .listRowInsets(EdgeInsets())
     }
 
+    func toast(
+        isPresenting: Binding<Bool>,
+        msg: String,
+        image: String? = nil,
+        duration: Double = 1.5,
+        alignment: Alignment = .bottom,
+        padding: EdgeInsets = .init(top: 8, leading: 16, bottom: 24, trailing: 16),
+        maxWidth: CGFloat?
+    ) -> some View {
+        self.modifier(
+            ToastModifier(
+                isPresenting: isPresenting,
+                duration: duration,
+                alignment: alignment,
+                padding: padding
+            ) {
+                ToastView(
+                    msg: msg,
+                    image: image,
+                    maxWidth: maxWidth
+                )
+            }
+        )
+    }
+
     func onAppResignActive(_ action: @escaping () -> Void) -> some View {
         self.onReceive(
             NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification),
@@ -355,5 +380,37 @@ extension View {
         else elseTransform: (Self) -> ElseTransform
     ) -> some View {
         if let value = value { ifTransform(self, value) } else { elseTransform(self) }
+    }
+}
+
+private struct FramePreferenceKey: PreferenceKey {
+    static var defaultValue: CGRect = .zero
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {}
+}
+
+private struct SizePreferenceKey: PreferenceKey {
+    static var defaultValue: CGSize = .zero
+    static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
+}
+
+extension View {
+    func readFrame(onChange: @escaping (CGRect) -> Void) -> some View {
+        background(
+            GeometryReader { geometryProxy in
+                Color.clear
+                    .preference(key: FramePreferenceKey.self, value: geometryProxy.frame(in: .global))
+            }
+        )
+        .onPreferenceChange(FramePreferenceKey.self, perform: onChange)
+    }
+
+    func readSize(onChange: @escaping (CGSize) -> Void) -> some View {
+        background(
+            GeometryReader { geometryProxy in
+                Color.clear
+                    .preference(key: SizePreferenceKey.self, value: geometryProxy.size)
+            }
+        )
+        .onPreferenceChange(SizePreferenceKey.self, perform: onChange)
     }
 }

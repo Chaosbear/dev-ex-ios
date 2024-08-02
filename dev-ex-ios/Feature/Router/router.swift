@@ -29,7 +29,7 @@ class Router: ObservableObject, RouterProtocol {
 
     // MARK: - Property
     /// Main Router
-    static var shared = Router(parent: nil)
+    static var main = Router(parent: nil)
 
     /// Used to programatically control navigation stack
     @Published var path: NavigationPath = NavigationPath()
@@ -106,7 +106,12 @@ extension Router {
         case .viewA:
             VStack {
                 Text("A")
+                    .asButton {
+                        Router.main.navigateTo(.viewB("A"))
+                    }
             }
+            .navigationBarTitle("")
+            .toolbar(.hidden, for: .navigationBar)
         case .viewB:
             VStack {
                 Text("A")

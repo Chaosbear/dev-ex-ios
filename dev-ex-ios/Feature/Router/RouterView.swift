@@ -26,6 +26,7 @@ struct RouterView<Content: View>: View {
                 .navigationDestination(for: Route.self) { route in
                     router.view(for: route, type: .push)
                 }
+                .toolbar(.hidden, for: .navigationBar)
         }
         .sheet(item: $router.presentingSheet) { route in
             router.view(for: route, type: .sheet)

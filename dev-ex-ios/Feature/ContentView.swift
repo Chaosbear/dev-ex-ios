@@ -9,30 +9,43 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @EnvironmentObject var mainRouter: Router
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
 
     var body: some View {
-        List {
-            ForEach(items) { item in
-                NavigationLink {
-                    Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                } label: {
-                    Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+//        List {
+//            ForEach(items) { item in
+//                NavigationLink {
+//                    Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+//                } label: {
+//                    Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+//                }
+//            }
+//            .onDelete(perform: deleteItems)
+//        }
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                EditButton()
+//            }
+//            ToolbarItem {
+//                Button(action: addItem) {
+//                    Label("Add Item", systemImage: "plus")
+//                }
+//            }
+//        }
+        VStack(spacing: 0) {
+            DefaultNavigationBarView(
+                title:"Main Screen",
+                router: mainRouter
+            )
+            Text("Main")
+                .asButton {
+                    mainRouter.navigateTo(.viewA)
                 }
-            }
-            .onDelete(perform: deleteItems)
+                .frameExpand()
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
-            }
-            ToolbarItem {
-                Button(action: addItem) {
-                    Label("Add Item", systemImage: "plus")
-                }
-            }
-        }
+//        .ignoresSafeArea(.all)
     }
 
     private func addItem() {
