@@ -23,20 +23,6 @@ struct dev_ex_iosApp: App {
     // router
     @StateObject var mainRouter: Router = Router.main
 
-    // swift data
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
     // other
     @State private var isLaunching = true
 
@@ -61,7 +47,6 @@ struct dev_ex_iosApp: App {
         }
         .environmentObject(theme)
         .environmentObject(mainRouter)
-        .modelContainer(sharedModelContainer)
     }
 }
 
