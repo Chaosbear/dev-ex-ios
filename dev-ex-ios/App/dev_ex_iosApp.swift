@@ -43,10 +43,10 @@ struct dev_ex_iosApp: App {
                     RootView()
                 }
                 .transition(.opacity.animation(.default))
+                .environmentObject(theme)
+                .environmentObject(mainRouter)
             }
         }
-        .environmentObject(theme)
-        .environmentObject(mainRouter)
     }
 }
 
