@@ -1,14 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
+    "%@" : {
+
+    },
+    "<< back" : {
 
     },
     "A" : {
 
     },
     "Add Item" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -25,7 +27,6 @@
       }
     },
     "Item at %@" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -40,9 +41,6 @@
           }
         }
       }
-    },
-    "Main" : {
-
     },
     "Select an item" : {
       "extractionState" : "stale",
@@ -60,6 +58,9 @@
           }
         }
       }
+    },
+    "View %lld" : {
+
     }
   },
   "version" : "1.0"

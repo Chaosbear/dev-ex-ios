@@ -1,5 +1,5 @@
 //
-//  DefaultNavigationBarView.swift
+//  NavBarView.swift
 //  dev-ex-ios
 //
 //  Created by Sukrit Chatmeeboon on 29/7/2567 BE.
@@ -7,42 +7,59 @@
 
 import SwiftUI
 
-struct DefaultNavigationBarView: View {
+struct NavBarView: View {
     // MARK: - Properties
     @EnvironmentObject var theme: ThemeState
     @ObservedObject var router: Router
-    private var title: String
+    private let title: String
+    private let hasBackBtn: Bool
 
     // MARK: - Layout
     private let navBarHeight: CGFloat = 56
 
     // MARK: - Text Style
-    private var navTitleTextStyle: TextStyler { TextStyler(
+    private var rootNavTitleTextStyle: TextStyler { TextStyler(
         font: theme.font.h3.bold,
+        color: theme.color.primary
+    )}
+    private var navTitleTextStyle: TextStyler { TextStyler(
+        font: theme.font.h6.bold,
         color: theme.color.primary
     )}
 
     // MARK: - Life Cycle
     init(
         title: String,
+        hasBackBtn: Bool = true,
         router: Router
     ) {
         self.title = title
+        self.hasBackBtn = hasBackBtn
         self.router = router
     }
 
     // MARK: - UI Body
     var body: some View {
-            HStack(alignment: .center, spacing: 0) {
-                if router.path.count > 0 {
-                    backBtn
-                }
-                navTitle
+        HStack(alignment: .center, spacing: 0) {
+            if hasBackBtn {
+                Text(title)
+                    .modifier(navTitleTextStyle)
+                    .frameHorizontalExpand(alignment: .center)
+                    .frame(height: navBarHeight, alignment: .center)
+            } else {
+                Text(title)
+                    .modifier(rootNavTitleTextStyle)
                     .frameHorizontalExpand(alignment: .leading)
+                    .frame(height: navBarHeight, alignment: .center)
             }
-            .padding(.horizontal, 12)
-            .frame(height: navBarHeight, alignment: .center)
-            .background(theme.color.primary2)
+        }
+        .padding(.horizontal, 12)
+        .background(theme.color.primary2.ignoresSafeArea(.all, edges: .all))
+        .overlay(alignment: .leading) {
+            if hasBackBtn {
+                backBtn
+            }
+        }
     }
 
     // MARK: - UI Components
@@ -60,11 +77,5 @@ struct DefaultNavigationBarView: View {
                 router.navigateBack()
             }
             .padding(.trailing, 12)
-    }
-
-    @ViewBuilder
-    private var navTitle: some View {
-        Text(title)
-            .modifier(navTitleTextStyle)
     }
 }

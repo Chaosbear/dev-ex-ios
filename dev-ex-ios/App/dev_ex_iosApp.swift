@@ -54,7 +54,7 @@ struct dev_ex_iosApp: App {
                     }
             } else {
                 RouterView(router: mainRouter) {
-                    ContentView()
+                    RootView()
                 }
                 .transition(.opacity.animation(.default))
             }

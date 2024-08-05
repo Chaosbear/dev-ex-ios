@@ -106,16 +106,25 @@ extension Router {
         case .viewA:
             VStack {
                 Text("A")
-                    .asButton {
-                        Router.main.navigateTo(.viewB("A"))
-                    }
             }
-            .navigationBarTitle("")
+        case .viewB(let text):
+            VStack(alignment: .center, spacing: 0) {
+                NavBarView(
+                    title:"\(text) Screen",
+                    hasBackBtn: true,
+                    router: Router.main
+                )
+                VStack(alignment: .center, spacing: 12) {
+                    Text(text)
+                    Text("<< back")
+                        .asButton {
+                            Router.main.navigateBack()
+                        }
+                }
+                .frameExpand(alignment: .center)
+                .background(Color.brown.opacity(0.2))
+            }
             .toolbar(.hidden, for: .navigationBar)
-        case .viewB:
-            VStack {
-                Text("A")
-            }
         case .viewC:
             VStack {
                 Text("A")

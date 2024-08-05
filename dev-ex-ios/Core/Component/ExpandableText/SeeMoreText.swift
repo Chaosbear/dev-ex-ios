@@ -63,7 +63,7 @@ struct SeeMoreTextView: View {
                 )
             if intrinsicSize.height > truncatedSize.height {
                 Text(seeMoreText)
-                    .foregroundColor(Color(.ds_tangerineOrange))
+                    .foregroundColor(Color.orange)
                     .multilineTextAlignment(alignment)
                     .padding(.top, lineSpacing)
             }
