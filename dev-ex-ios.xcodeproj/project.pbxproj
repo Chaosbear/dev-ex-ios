@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960323352C6E5A63003A23FB /* RootTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960323342C6E5A63003A23FB /* RootTabbarView.swift */; };
 		96044D6E2C4CA96B001D256C /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96044D6D2C4CA96B001D256C /* ColorPalette.swift */; };
 		96044D712C4D9ABC001D256C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 96044D702C4D9ABC001D256C /* Localizable.xcstrings */; };
 		96044D742C4E3C73001D256C /* router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96044D732C4E3C73001D256C /* router.swift */; };
@@ -36,6 +37,7 @@
 		96C667AB2C5D1A89003D9D03 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C667AA2C5D1A89003D9D03 /* Shimmer.swift */; };
 		96D76F892C45935A0047B415 /* FontDesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D76F882C45935A0047B415 /* FontDesignSystem.swift */; };
 		96D76F8C2C45957F0047B415 /* ColorDesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D76F8B2C45957F0047B415 /* ColorDesignSystem.swift */; };
+		96DC0DEE2C73662A000383DA /* GlobalDeviceVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC0DED2C73662A000383DA /* GlobalDeviceVariable.swift */; };
 		96F9309A2C42F02C00B81E11 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F930992C42F02C00B81E11 /* ColorExtension.swift */; };
 		96F9309C2C43107000B81E11 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9309B2C43107000B81E11 /* StringExtension.swift */; };
 		96F9309E2C432BAE00B81E11 /* ThemeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9309D2C432BAE00B81E11 /* ThemeState.swift */; };
@@ -61,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		960323342C6E5A63003A23FB /* RootTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabbarView.swift; sourceTree = "<group>"; };
 		96044D6D2C4CA96B001D256C /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		96044D702C4D9ABC001D256C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		96044D732C4E3C73001D256C /* router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = router.swift; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 		96C667AA2C5D1A89003D9D03 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		96D76F882C45935A0047B415 /* FontDesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontDesignSystem.swift; sourceTree = "<group>"; };
 		96D76F8B2C45957F0047B415 /* ColorDesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDesignSystem.swift; sourceTree = "<group>"; };
+		96DC0DED2C73662A000383DA /* GlobalDeviceVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDeviceVariable.swift; sourceTree = "<group>"; };
 		96F930992C42F02C00B81E11 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		96F9309B2C43107000B81E11 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		96F9309D2C432BAE00B81E11 /* ThemeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeState.swift; sourceTree = "<group>"; };
@@ -130,6 +134,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		960323312C6E5448003A23FB /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		960323322C6E545A003A23FB /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		960323332C6E54E9003A23FB /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		96044D6F2C4D9A85001D256C /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +176,7 @@
 		960677142C0B0CFE00B2204A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				96DC0DEC2C736612000383DA /* GlobalVariable */,
 				9683078B2C57A83A00970ABF /* SwiftUIEnvironmentVariable */,
 				96D76F8A2C4593670047B415 /* DesignSysytem */,
 				96FF34672C2800C600323544 /* Component */,
@@ -236,15 +262,16 @@
 			isa = PBXGroup;
 			children = (
 				963BC2EF2C6122440096A1B6 /* RootView.swift */,
+				960323342C6E5A63003A23FB /* RootTabbarView.swift */,
 			);
 			path = RootView;
 			sourceTree = "<group>";
 		};
-		963BC2EE2C6122230096A1B6 /* Screen */ = {
+		963BC2EE2C6122230096A1B6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Screen;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		963BC3012C6132580096A1B6 /* Config */ = {
@@ -319,10 +346,13 @@
 		969DCAD32BFFA5A100D4A057 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				960323332C6E54E9003A23FB /* Notification */,
+				960323322C6E545A003A23FB /* Library */,
 				969DCAD22BFFA58700D4A057 /* LaunchScreen */,
 				963BC2ED2C6122100096A1B6 /* RootView */,
 				96044D772C4E3CD6001D256C /* Router */,
-				963BC2EE2C6122230096A1B6 /* Screen */,
+				963BC2EE2C6122230096A1B6 /* Home */,
+				960323312C6E5448003A23FB /* Search */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -391,6 +421,14 @@
 				96F930982C42EDD800B81E11 /* Color */,
 			);
 			path = DesignSysytem;
+			sourceTree = "<group>";
+		};
+		96DC0DEC2C736612000383DA /* GlobalVariable */ = {
+			isa = PBXGroup;
+			children = (
+				96DC0DED2C73662A000383DA /* GlobalDeviceVariable.swift */,
+			);
+			path = GlobalVariable;
 			sourceTree = "<group>";
 		};
 		96F930972C42EDC300B81E11 /* Theme */ = {
@@ -579,6 +617,8 @@
 				96A87EAD2C4ECEE100A1A209 /* RouterView.swift in Sources */,
 				963BC2EC2C6115D40096A1B6 /* UIScreenExtension.swift in Sources */,
 				96F9309C2C43107000B81E11 /* StringExtension.swift in Sources */,
+				960323352C6E5A63003A23FB /* RootTabbarView.swift in Sources */,
+				96DC0DEE2C73662A000383DA /* GlobalDeviceVariable.swift in Sources */,
 				96C667A22C5D183E003D9D03 /* FlexView.swift in Sources */,
 				96F930A12C437FBF00B81E11 /* FontExtension.swift in Sources */,
 				96D76F892C45935A0047B415 /* FontDesignSystem.swift in Sources */,

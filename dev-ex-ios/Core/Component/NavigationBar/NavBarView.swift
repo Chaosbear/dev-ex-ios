@@ -54,7 +54,7 @@ struct NavBarView: View {
             }
         }
         .padding(.horizontal, 12)
-        .background(theme.color.primary2.ignoresSafeArea(.all, edges: .all))
+        .background(theme.color.primary2)
         .overlay(alignment: .leading) {
             if hasBackBtn {
                 backBtn

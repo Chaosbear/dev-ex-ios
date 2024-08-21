@@ -11,15 +11,48 @@ struct RootView: View {
     @EnvironmentObject var mainRouter: Router
     @EnvironmentObject var theme: ThemeState
 
+    @State private var selectedTab: RootViewTab = .home
+
     private var itemTextStyle: TextStyler { TextStyler(
         font: theme.font.subTitle1.regular,
         color: theme.color.subTitle1
     )}
 
     var body: some View {
+        ZStack(alignment: .bottom) {
+            TabView(selection: $selectedTab) {
+                mockScreen(RootViewTab.home.title)
+                    .tag(RootViewTab.home)
+                mockScreen(RootViewTab.search.title)
+                    .tag(RootViewTab.search)
+                mockScreen(RootViewTab.library.title)
+                    .tag(RootViewTab.library)
+                mockScreen(RootViewTab.notification.title)
+                    .tag(RootViewTab.notification)
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .background(theme.color.primary2
+                .frame(height: 56)
+                .frameExpand(alignment: .top)
+            )
+            tabbar
+        }
+        .background(theme.color.background, ignoresSafeAreaEdges: [.horizontal, .bottom])
+        .background(theme.color.primary2)
+    }
+
+    // MARK: - UI Component
+    @ViewBuilder
+    private var tabbar: some View {
+        RootTabbarView(selectedTab: $selectedTab)
+            .ignoresSafeArea(.all, edges: .bottom)
+    }
+
+    @ViewBuilder
+    private func mockScreen(_ title: String) -> some View {
         VStack(alignment: .center, spacing: 0) {
             NavBarView(
-                title:"Main Screen",
+                title: title,
                 hasBackBtn: false,
                 router: mainRouter
             )
@@ -46,8 +79,9 @@ struct RootView: View {
                             }
                     }
                 }
-                .padding(css: 12, 12, 40, 12)
+                .padding(css: 12, 12, 80, 12)
             }
+            .background(theme.color.background)
         }
     }
 }
