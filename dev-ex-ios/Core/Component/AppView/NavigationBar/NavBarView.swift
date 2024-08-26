@@ -20,11 +20,11 @@ struct NavBarView: View {
     // MARK: - Text Style
     private var rootNavTitleTextStyle: TextStyler { TextStyler(
         font: theme.font.h3.bold,
-        color: theme.color.primary
+        color: theme.color.h1
     )}
     private var navTitleTextStyle: TextStyler { TextStyler(
         font: theme.font.h6.bold,
-        color: theme.color.primary
+        color: theme.color.h1
     )}
 
     // MARK: - Life Cycle
@@ -54,7 +54,7 @@ struct NavBarView: View {
             }
         }
         .padding(.horizontal, 12)
-        .background(theme.color.primary2)
+        .background(theme.color.background)
         .overlay(alignment: .leading) {
             if hasBackBtn {
                 backBtn

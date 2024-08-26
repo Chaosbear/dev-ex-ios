@@ -27,13 +27,24 @@ struct TextStyler: ViewModifier {
             name: String,
             size: CGFloat
         )
+        case fixCustom(
+            name: String,
+            fixSize: CGFloat
+        )
         case system(
+            size: CGFloat,
+            weight: Font.Weight = .regular,
+            design: Font.Design = .default
+        )
+        case fixSystem(
             size: CGFloat,
             weight: Font.Weight = .regular,
             design: Font.Design = .default
         )
     }
 
+    // observe text size change by
+    // declaring dynamicTypeSize environment
     @Environment(\.dynamicTypeSize) var dynamicTypeSize
     private var initialFont: FontType
     private var color: Color
@@ -42,8 +53,16 @@ struct TextStyler: ViewModifier {
         switch initialFont {
         case .custom(let name, let size):
             return .custom(name, size: size)
+        case .fixCustom(let name, let fixSize):
+            return .custom(name, fixedSize: fixSize)
         case .system(let size, let weight, let design):
             return .scaledSystem(
+                size: size,
+                weight: weight,
+                design: design
+            )
+        case .fixSystem(let size, let weight, let design):
+            return .system(
                 size: size,
                 weight: weight,
                 design: design

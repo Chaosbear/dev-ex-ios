@@ -69,7 +69,6 @@ struct RootTabbarView: View {
                             width: isPhone ? 20 : 28,
                             height: isPhone ? 20 : 28
                         )
-                        .shadow(color: tab == selectedTab ? theme.color.primary : theme.color.neutral, radius: 2)
                     Text(tab.title)
                         .modifier(tab == selectedTab ? selectedTitleTextStyle : titleTextStyle)
                         .lineLimit(1)
@@ -83,7 +82,7 @@ struct RootTabbarView: View {
                 }
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: selectedTab)
+        .animation(.default, value: selectedTab)
         .padding(.top, 24)
         .background(LinearGradient(
             colors: [

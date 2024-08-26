@@ -31,14 +31,14 @@ struct RootView: View {
                     .tag(RootViewTab.notification)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
-            .background(theme.color.primary2
+            .background(theme.color.background
                 .frame(height: 56)
                 .frameExpand(alignment: .top)
             )
             tabbar
         }
         .background(theme.color.background, ignoresSafeAreaEdges: [.horizontal, .bottom])
-        .background(theme.color.primary2)
+        .background(theme.color.background)
     }
 
     // MARK: - UI Component

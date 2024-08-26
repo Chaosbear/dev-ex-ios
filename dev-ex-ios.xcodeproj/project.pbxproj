@@ -25,7 +25,6 @@
 		963BC2F02C6122440096A1B6 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BC2EF2C6122440096A1B6 /* RootView.swift */; };
 		965264952BF0DC0400C002CB /* image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965264942BF0DC0400C002CB /* image.xcassets */; };
 		968307862C57916100970ABF /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968307852C57916100970ABF /* NavBarView.swift */; };
-		968307882C57918100970ABF /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968307872C57918100970ABF /* CustomTabBarView.swift */; };
 		9683078A2C57A83400970ABF /* SafeAreaVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968307892C57A83400970ABF /* SafeAreaVariable.swift */; };
 		969353E32C5635350059A309 /* UINavigationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969353E22C5635350059A309 /* UINavigationExtension.swift */; };
 		96A87EAD2C4ECEE100A1A209 /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A87EAC2C4ECEE100A1A209 /* RouterView.swift */; };
@@ -89,7 +88,6 @@
 		965264942BF0DC0400C002CB /* image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = image.xcassets; sourceTree = "<group>"; };
 		965264962BF149FE00C002CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		968307852C57916100970ABF /* NavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
-		968307872C57918100970ABF /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		968307892C57A83400970ABF /* SafeAreaVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaVariable.swift; sourceTree = "<group>"; };
 		969353E22C5635350059A309 /* UINavigationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationExtension.swift; sourceTree = "<group>"; };
 		96A87EAC2C4ECEE100A1A209 /* RouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterView.swift; sourceTree = "<group>"; };
@@ -141,13 +139,6 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		960323322C6E545A003A23FB /* Library */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
 		960323332C6E54E9003A23FB /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,11 +167,12 @@
 		960677142C0B0CFE00B2204A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				96FF34672C2800C600323544 /* Component */,
+				96D76F8A2C4593670047B415 /* DesignSysytem */,
+				960677152C0B0F4E00B2204A /* Extension */,
 				96DC0DEC2C736612000383DA /* GlobalVariable */,
 				9683078B2C57A83A00970ABF /* SwiftUIEnvironmentVariable */,
-				96D76F8A2C4593670047B415 /* DesignSysytem */,
-				96FF34672C2800C600323544 /* Component */,
-				960677152C0B0F4E00B2204A /* Extension */,
+				96CC69FE2C7B8C6E004FF82C /* Worker */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -310,14 +302,6 @@
 			path = NavigationBar;
 			sourceTree = "<group>";
 		};
-		969353E52C56BB420059A309 /* Tabbar */ = {
-			isa = PBXGroup;
-			children = (
-				968307872C57918100970ABF /* CustomTabBarView.swift */,
-			);
-			path = Tabbar;
-			sourceTree = "<group>";
-		};
 		969DCAD02BFFA56100D4A057 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,13 +330,13 @@
 		969DCAD32BFFA5A100D4A057 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				960323332C6E54E9003A23FB /* Notification */,
-				960323322C6E545A003A23FB /* Library */,
+				96044D772C4E3CD6001D256C /* Router */,
 				969DCAD22BFFA58700D4A057 /* LaunchScreen */,
 				963BC2ED2C6122100096A1B6 /* RootView */,
-				96044D772C4E3CD6001D256C /* Router */,
 				963BC2EE2C6122230096A1B6 /* Home */,
 				960323312C6E5448003A23FB /* Search */,
+				96CC69FF2C7B8D51004FF82C /* UserLibrary */,
+				960323332C6E54E9003A23FB /* Notification */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -413,6 +397,42 @@
 			path = Shimmer;
 			sourceTree = "<group>";
 		};
+		96CC69FE2C7B8C6E004FF82C /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				96C6679A2C5D1729003D9D03 /* NetworkMonitoring */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
+		96CC69FF2C7B8D51004FF82C /* UserLibrary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserLibrary;
+			sourceTree = "<group>";
+		};
+		96CC6A002C7B8D6C004FF82C /* AppView */ = {
+			isa = PBXGroup;
+			children = (
+				969353E42C56BB360059A309 /* NavigationBar */,
+			);
+			path = AppView;
+			sourceTree = "<group>";
+		};
+		96CC6A012C7B8D79004FF82C /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				96C667A62C5D1927003D9D03 /* Toast */,
+				96C667A92C5D1A77003D9D03 /* Shimmer */,
+				96C667992C5D171B003D9D03 /* PullToRefresh */,
+				96C667A02C5D182C003D9D03 /* FlexBox */,
+				96C6679D2C5D17A6003D9D03 /* ExpandableText */,
+				96C667A32C5D18CF003D9D03 /* CustomShape */,
+			);
+			path = CommonView;
+			sourceTree = "<group>";
+		};
 		96D76F8A2C4593670047B415 /* DesignSysytem */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,15 +479,8 @@
 		96FF34672C2800C600323544 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				96C667A32C5D18CF003D9D03 /* CustomShape */,
-				96C6679D2C5D17A6003D9D03 /* ExpandableText */,
-				96C667A02C5D182C003D9D03 /* FlexBox */,
-				969353E42C56BB360059A309 /* NavigationBar */,
-				96C6679A2C5D1729003D9D03 /* NetworkMonitoring */,
-				96C667992C5D171B003D9D03 /* PullToRefresh */,
-				96C667A92C5D1A77003D9D03 /* Shimmer */,
-				969353E52C56BB420059A309 /* Tabbar */,
-				96C667A62C5D1927003D9D03 /* Toast */,
+				96CC6A012C7B8D79004FF82C /* CommonView */,
+				96CC6A002C7B8D6C004FF82C /* AppView */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -625,7 +638,6 @@
 				96044D6E2C4CA96B001D256C /* ColorPalette.swift in Sources */,
 				96C667A82C5D1934003D9D03 /* ToastView.swift in Sources */,
 				96C6679C2C5D1744003D9D03 /* NetworkMonitor.swift in Sources */,
-				968307882C57918100970ABF /* CustomTabBarView.swift in Sources */,
 				960BF72E2BD59D8D00407C13 /* dev_ex_iosApp.swift in Sources */,
 				9683078A2C57A83400970ABF /* SafeAreaVariable.swift in Sources */,
 				960677172C0B0F9A00B2204A /* ViewExtension.swift in Sources */,
