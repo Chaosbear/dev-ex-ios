@@ -8,4 +8,3 @@
 import UIKit
 
 let isPhoneGlobal = UIDevice.current.userInterfaceIdiom == .phone
-

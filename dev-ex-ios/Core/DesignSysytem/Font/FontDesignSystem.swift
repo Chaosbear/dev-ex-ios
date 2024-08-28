@@ -28,7 +28,7 @@ protocol FontSystemProtocol {
     var caption: DSFontWeight { get }
 }
 
-struct defaultFontTheme: FontSystemProtocol {
+struct DefaultFontTheme: FontSystemProtocol {
     var h1 = DSFontWeight(
         light: .system(size: 36, weight: .light),
         regular: .system(size: 36, weight: .regular),

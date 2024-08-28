@@ -9,15 +9,15 @@ import SwiftUI
 import SwiftData
 
 @main
-struct dev_ex_iosApp: App {
+struct DevExIosApp: App {
     // MARK: - Property
     // appDelegate adapter
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     // theme
     @StateObject var theme = ThemeState(
-        font: defaultFontTheme(),
-        color: defaultColorTheme()
+        font: DefaultFontTheme(),
+        color: DefaultColorTheme()
     )
 
     // router
@@ -25,7 +25,6 @@ struct dev_ex_iosApp: App {
 
     // other
     @State private var isLaunching = true
-
 
     // MARK: - UI Body
     var body: some Scene {
@@ -52,7 +51,7 @@ struct dev_ex_iosApp: App {
 
 // MARK: - App Delegate
 class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         return true
     }
 }

@@ -70,7 +70,6 @@ extension View {
     }
 }
 
-
 extension View {
     // MARK: - Convenience functions for layouts
 

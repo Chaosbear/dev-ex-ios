@@ -40,7 +40,6 @@ class Router: ObservableObject, RouterProtocol {
     /// Used for access parent Router instances to dissmiss or navigate to other view
     weak var parent: Router?
 
-
     // MARK: - Life Cycle
     init(parent: Router?) {
         self.parent = parent
@@ -110,7 +109,7 @@ extension Router {
         case .viewB(let text):
             VStack(alignment: .center, spacing: 0) {
                 NavBarView(
-                    title:"\(text) Screen",
+                    title: "\(text) Screen",
                     hasBackBtn: true,
                     router: Router.main
                 )

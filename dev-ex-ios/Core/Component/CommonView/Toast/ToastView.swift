@@ -79,7 +79,7 @@ struct ToastView: View {
                 Image(icon)
                     .resizable()
                     .renderingMode(.template)
-                    .frame(width: isPhone ? 14 : 16, height:  isPhone ? 14 : 16)
+                    .frame(width: isPhone ? 14 : 16, height: isPhone ? 14 : 16)
                     .foregroundStyle(Color.orange)
             }
             Text(msg)

@@ -36,7 +36,7 @@ protocol ColorSystemProtocol {
     var overline: Color { get }
 }
 
-struct defaultColorTheme: ColorSystemProtocol {
+struct DefaultColorTheme: ColorSystemProtocol {
     var primary = Color(Palette.brilliantAzure)
     var primary2 = Color(Palette.mediumAquamarine)
     var secondary = Color(Palette.cyan)

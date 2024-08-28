@@ -78,7 +78,9 @@ struct RootTabbarView: View {
                 .frameHorizontalExpand(alignment: .center)
                 .contentShape(.rect)
                 .asButton {
-                    selectedTab = tab
+                    if selectedTab != tab {
+                        selectedTab = tab
+                    }
                 }
             }
         }
