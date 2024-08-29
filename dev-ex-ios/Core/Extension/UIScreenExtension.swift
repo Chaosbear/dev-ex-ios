@@ -12,12 +12,20 @@ extension UIScreen {
         UIWindow.current?.windowScene?.screen
     }
 
-    func screenWidth() -> CGFloat {
+    func deviceWidth() -> CGFloat {
         return min(bounds.width, bounds.height)
     }
 
-    func screenHeight() -> CGFloat {
+    func deviceHeight() -> CGFloat {
         return max(bounds.width, bounds.height)
+    }
+
+    func screenWidth() -> CGFloat {
+        return bounds.width
+    }
+
+    func screenHeight() -> CGFloat {
+        return bounds.height
     }
 }
 

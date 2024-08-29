@@ -23,9 +23,10 @@
 		960BF74D2BD59D8F00407C13 /* dev_ex_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960BF74C2BD59D8F00407C13 /* dev_ex_iosUITestsLaunchTests.swift */; };
 		963BC2EC2C6115D40096A1B6 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BC2EB2C6115D40096A1B6 /* UIScreenExtension.swift */; };
 		963BC2F02C6122440096A1B6 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BC2EF2C6122440096A1B6 /* RootView.swift */; };
+		96426F972C7F8CBD0000CBE1 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 96426F962C7F8CBD0000CBE1 /* Swinject */; };
+		96426F9B2C80F86D0000CBE1 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96426F9A2C80F86D0000CBE1 /* DIContainer.swift */; };
 		965264952BF0DC0400C002CB /* image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965264942BF0DC0400C002CB /* image.xcassets */; };
 		968307862C57916100970ABF /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968307852C57916100970ABF /* NavBarView.swift */; };
-		9683078A2C57A83400970ABF /* SafeAreaVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968307892C57A83400970ABF /* SafeAreaVariable.swift */; };
 		969353E32C5635350059A309 /* UINavigationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969353E22C5635350059A309 /* UINavigationExtension.swift */; };
 		96A87EAD2C4ECEE100A1A209 /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A87EAC2C4ECEE100A1A209 /* RouterView.swift */; };
 		96C6679C2C5D1744003D9D03 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C6679B2C5D1744003D9D03 /* NetworkMonitor.swift */; };
@@ -85,10 +86,10 @@
 		963BC3032C6132CD0096A1B6 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		963BC3042C6132EB0096A1B6 /* UAT.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UAT.xcconfig; sourceTree = "<group>"; };
 		963BC3052C6132F70096A1B6 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		96426F9A2C80F86D0000CBE1 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		965264942BF0DC0400C002CB /* image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = image.xcassets; sourceTree = "<group>"; };
 		965264962BF149FE00C002CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		968307852C57916100970ABF /* NavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
-		968307892C57A83400970ABF /* SafeAreaVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaVariable.swift; sourceTree = "<group>"; };
 		969353E22C5635350059A309 /* UINavigationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationExtension.swift; sourceTree = "<group>"; };
 		96A87EAC2C4ECEE100A1A209 /* RouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterView.swift; sourceTree = "<group>"; };
 		96C6679B2C5D1744003D9D03 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96426F972C7F8CBD0000CBE1 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,12 +169,13 @@
 		960677142C0B0CFE00B2204A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				96426F992C80F71B0000CBE1 /* DIContainer */,
 				96FF34672C2800C600323544 /* Component */,
 				96D76F8A2C4593670047B415 /* DesignSysytem */,
 				960677152C0B0F4E00B2204A /* Extension */,
 				96DC0DEC2C736612000383DA /* GlobalVariable */,
-				9683078B2C57A83A00970ABF /* SwiftUIEnvironmentVariable */,
-				96CC69FE2C7B8C6E004FF82C /* Worker */,
+				96426F982C80F70B0000CBE1 /* Repository */,
+				96CC69FE2C7B8C6E004FF82C /* Service */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -277,6 +280,21 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		96426F982C80F70B0000CBE1 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		96426F992C80F71B0000CBE1 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				96426F9A2C80F86D0000CBE1 /* DIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
 		965264932BF0DB5500C002CB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,14 +302,6 @@
 				965264942BF0DC0400C002CB /* image.xcassets */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		9683078B2C57A83A00970ABF /* SwiftUIEnvironmentVariable */ = {
-			isa = PBXGroup;
-			children = (
-				968307892C57A83400970ABF /* SafeAreaVariable.swift */,
-			);
-			path = SwiftUIEnvironmentVariable;
 			sourceTree = "<group>";
 		};
 		969353E42C56BB360059A309 /* NavigationBar */ = {
@@ -397,12 +407,12 @@
 			path = Shimmer;
 			sourceTree = "<group>";
 		};
-		96CC69FE2C7B8C6E004FF82C /* Worker */ = {
+		96CC69FE2C7B8C6E004FF82C /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				96C6679A2C5D1729003D9D03 /* NetworkMonitoring */,
 			);
-			path = Worker;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		96CC69FF2C7B8D51004FF82C /* UserLibrary */ = {
@@ -502,6 +512,9 @@
 				96426F942C7F853B0000CBE1 /* PBXTargetDependency */,
 			);
 			name = "dev-ex-ios";
+			packageProductDependencies = (
+				96426F962C7F8CBD0000CBE1 /* Swinject */,
+			);
 			productName = "dev-ex-ios";
 			productReference = 960BF72A2BD59D8D00407C13 /* dev-ex-ios.app */;
 			productType = "com.apple.product-type.application";
@@ -577,6 +590,7 @@
 			mainGroup = 960BF7212BD59D8D00407C13;
 			packageReferences = (
 				96426F922C7F85170000CBE1 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				96426F952C7F8CBD0000CBE1 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 960BF72B2BD59D8D00407C13 /* Products */;
 			projectDirPath = "";
@@ -643,12 +657,12 @@
 				96C667A82C5D1934003D9D03 /* ToastView.swift in Sources */,
 				96C6679C2C5D1744003D9D03 /* NetworkMonitor.swift in Sources */,
 				960BF72E2BD59D8D00407C13 /* dev_ex_iosApp.swift in Sources */,
-				9683078A2C57A83400970ABF /* SafeAreaVariable.swift in Sources */,
 				960677172C0B0F9A00B2204A /* ViewExtension.swift in Sources */,
 				96FF34692C2802AC00323544 /* RefreshableScrollView.swift in Sources */,
 				96C667A52C5D18E3003D9D03 /* LineView.swift in Sources */,
 				96C6679F2C5D17B8003D9D03 /* SeeMoreText.swift in Sources */,
 				96044D762C4E3C7D001D256C /* route.swift in Sources */,
+				96426F9B2C80F86D0000CBE1 /* DIContainer.swift in Sources */,
 				968307862C57916100970ABF /* NavBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1551,6 +1565,14 @@
 				minimumVersion = 0.56.2;
 			};
 		};
+		96426F952C7F8CBD0000CBE1 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1558,6 +1580,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 96426F922C7F85170000CBE1 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		96426F962C7F8CBD0000CBE1 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96426F952C7F8CBD0000CBE1 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
