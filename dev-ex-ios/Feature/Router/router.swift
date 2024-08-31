@@ -32,13 +32,17 @@ class Router: ObservableObject, RouterProtocol {
     static var main = Router(parent: nil)
 
     /// Used to programatically control navigation stack
-    @Published var path: NavigationPath = NavigationPath()
+    @Published var path: NavigationPath = NavigationPath() {
+        didSet {
+            print("[devex] path: \(path)")
+        }
+    }
     /// Used to present a view using a sheet
     var presentingSheet: Route?
     /// Used to present a view using a full screen cover
     var presentingFullScreenCover: Route?
     /// Used for access parent Router instances to dissmiss or navigate to other view
-    weak var parent: Router?
+    private weak var parent: Router?
 
     // MARK: - Life Cycle
     init(parent: Router?) {
@@ -102,10 +106,8 @@ extension Router {
     @ViewBuilder
     func view(for route: Route, type: NavigationType) -> some View {
         switch route {
-        case .viewA:
-            VStack {
-                Text("A")
-            }
+        case .home(let index):
+            HomeView.configure(index: index)
         case .viewB(let text):
             VStack(alignment: .center, spacing: 0) {
                 NavBarView(

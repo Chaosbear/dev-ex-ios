@@ -21,7 +21,11 @@ struct RootView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                mockScreen(RootViewTab.home.title)
+                Text("Home")
+                    .asButton {
+                        mainRouter.navigateTo(.home(0))
+                    }
+                    .frameExpand(alignment: .center)
                     .tag(RootViewTab.home)
                 mockScreen(RootViewTab.search.title)
                     .tag(RootViewTab.search)

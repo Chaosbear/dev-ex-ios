@@ -21,7 +21,7 @@ class RouteArg: Hashable {
 
 // the possible destinations in Router
 enum Route: Hashable, Identifiable {
-    case viewA
+    case home(Int)
     case viewB(String)
     case viewC(args: RouteArg)
 

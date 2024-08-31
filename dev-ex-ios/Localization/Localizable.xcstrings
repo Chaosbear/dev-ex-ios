@@ -4,6 +4,9 @@
     "%@" : {
 
     },
+    "+" : {
+
+    },
     "<< back" : {
 
     },
@@ -26,6 +29,15 @@
           }
         }
       }
+    },
+    "Count %lld" : {
+
+    },
+    "Home" : {
+
+    },
+    "Home %lld" : {
+
     },
     "Item at %@" : {
       "extractionState" : "stale",

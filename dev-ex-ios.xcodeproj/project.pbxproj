@@ -38,6 +38,9 @@
 		96D76F892C45935A0047B415 /* FontDesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D76F882C45935A0047B415 /* FontDesignSystem.swift */; };
 		96D76F8C2C45957F0047B415 /* ColorDesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D76F8B2C45957F0047B415 /* ColorDesignSystem.swift */; };
 		96DC0DEE2C73662A000383DA /* GlobalDeviceVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC0DED2C73662A000383DA /* GlobalDeviceVariable.swift */; };
+		96F130B32C81EC14001B4C33 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F130B22C81EC14001B4C33 /* HomeView.swift */; };
+		96F130B52C81EC3F001B4C33 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F130B42C81EC3F001B4C33 /* HomeInteractor.swift */; };
+		96F130B72C81EC5B001B4C33 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F130B62C81EC5B001B4C33 /* HomePresenter.swift */; };
 		96F9309A2C42F02C00B81E11 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F930992C42F02C00B81E11 /* ColorExtension.swift */; };
 		96F9309C2C43107000B81E11 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9309B2C43107000B81E11 /* StringExtension.swift */; };
 		96F9309E2C432BAE00B81E11 /* ThemeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9309D2C432BAE00B81E11 /* ThemeState.swift */; };
@@ -101,6 +104,9 @@
 		96D76F882C45935A0047B415 /* FontDesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontDesignSystem.swift; sourceTree = "<group>"; };
 		96D76F8B2C45957F0047B415 /* ColorDesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDesignSystem.swift; sourceTree = "<group>"; };
 		96DC0DED2C73662A000383DA /* GlobalDeviceVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDeviceVariable.swift; sourceTree = "<group>"; };
+		96F130B22C81EC14001B4C33 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		96F130B42C81EC3F001B4C33 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		96F130B62C81EC5B001B4C33 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		96F930992C42F02C00B81E11 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		96F9309B2C43107000B81E11 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		96F9309D2C432BAE00B81E11 /* ThemeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeState.swift; sourceTree = "<group>"; };
@@ -265,6 +271,9 @@
 		963BC2EE2C6122230096A1B6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				96F130B22C81EC14001B4C33 /* HomeView.swift */,
+				96F130B42C81EC3F001B4C33 /* HomeInteractor.swift */,
+				96F130B62C81EC5B001B4C33 /* HomePresenter.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -509,7 +518,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				96426F942C7F853B0000CBE1 /* PBXTargetDependency */,
 			);
 			name = "dev-ex-ios";
 			packageProductDependencies = (
@@ -638,7 +646,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				96D76F8C2C45957F0047B415 /* ColorDesignSystem.swift in Sources */,
+				96F130B32C81EC14001B4C33 /* HomeView.swift in Sources */,
 				969353E32C5635350059A309 /* UINavigationExtension.swift in Sources */,
+				96F130B72C81EC5B001B4C33 /* HomePresenter.swift in Sources */,
 				963BC2F02C6122440096A1B6 /* RootView.swift in Sources */,
 				960677132C0B023500B2204A /* LaunchScreenView.swift in Sources */,
 				96044D742C4E3C73001D256C /* router.swift in Sources */,
@@ -646,6 +656,7 @@
 				96C667AB2C5D1A89003D9D03 /* Shimmer.swift in Sources */,
 				96F9309A2C42F02C00B81E11 /* ColorExtension.swift in Sources */,
 				96A87EAD2C4ECEE100A1A209 /* RouterView.swift in Sources */,
+				96F130B52C81EC3F001B4C33 /* HomeInteractor.swift in Sources */,
 				963BC2EC2C6115D40096A1B6 /* UIScreenExtension.swift in Sources */,
 				96F9309C2C43107000B81E11 /* StringExtension.swift in Sources */,
 				960323352C6E5A63003A23FB /* RootTabbarView.swift in Sources */,
@@ -696,10 +707,6 @@
 			isa = PBXTargetDependency;
 			target = 960BF7292BD59D8D00407C13 /* dev-ex-ios */;
 			targetProxy = 960BF7472BD59D8F00407C13 /* PBXContainerItemProxy */;
-		};
-		96426F942C7F853B0000CBE1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 96426F932C7F853B0000CBE1 /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1576,11 +1583,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		96426F932C7F853B0000CBE1 /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 96426F922C7F85170000CBE1 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
 		96426F962C7F8CBD0000CBE1 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 96426F952C7F8CBD0000CBE1 /* XCRemoteSwiftPackageReference "Swinject" */;
