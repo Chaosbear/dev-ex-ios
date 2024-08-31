@@ -597,7 +597,6 @@
 			);
 			mainGroup = 960BF7212BD59D8D00407C13;
 			packageReferences = (
-				96426F922C7F85170000CBE1 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 				96426F952C7F8CBD0000CBE1 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 960BF72B2BD59D8D00407C13 /* Products */;
@@ -1564,14 +1563,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		96426F922C7F85170000CBE1 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.56.2;
-			};
-		};
 		96426F952C7F8CBD0000CBE1 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
