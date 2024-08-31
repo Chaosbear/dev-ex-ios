@@ -8,7 +8,15 @@
 import Foundation
 
 class RouteArg: Hashable {
-    var args: [String: AnyObject] = [:]
+    private var args: [String: AnyObject] = [:]
+
+    func value(key: String) -> AnyObject? {
+        return args[key]
+    }
+
+    func addValue(key: String, value: AnyObject) {
+        args[key] = value
+    }
 
     static func == (lhs: RouteArg, rhs: RouteArg) -> Bool {
         ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
@@ -21,7 +29,7 @@ class RouteArg: Hashable {
 
 // the possible destinations in Router
 enum Route: Hashable, Identifiable {
-    case home(Int)
+    case home(args: RouteArg)
     case viewB(String)
     case viewC(args: RouteArg)
 

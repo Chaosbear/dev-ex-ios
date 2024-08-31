@@ -9,12 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     // MARK: - Configure
-    static func configure(index: Int) -> HomeView {
-        print("[devex] configure home")
-        let presenter = HomePresenter(index: index)
+    static func configure(presenter: HomePresenter, interactor: HomeInteractor) -> HomeView {
         return HomeView(
             presenter: presenter,
-            interactor: HomeInteractor(presenter: presenter)
+            interactor: interactor
         )
     }
 
@@ -40,7 +38,12 @@ struct HomeView: View {
         VStack(alignment: .center, spacing: 12) {
             Text("Home \(presenter.index)")
                 .asButton {
-                    mainRouter.navigateTo(.home(presenter.index + 1))
+                    let args = RouteArg()
+                    let presenter = HomePresenter(index: presenter.index + 1)
+                    let interactor = HomeInteractor(presenter: presenter)
+                    args.addValue(key: "presenter", value: presenter)
+                    args.addValue(key: "interactor", value: interactor)
+                    mainRouter.navigateTo(.home(args: args))
                 }
             Text("Count \(presenter.count)")
             Text("+")
