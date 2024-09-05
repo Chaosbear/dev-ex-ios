@@ -22,16 +22,10 @@ class HomeInteractor: HomeInteractorProtocol {
     // MARK: - Init
     init(presenter: HomePresenter) {
         self.presenter = presenter
-        print("[devex] init HomeInteractor \(presenter.index)")
-    }
-
-    deinit {
-        print("[devex] deinit HomeInteractor \(presenter.index)")
     }
 
     func tapIncrease() {
         count += 1
         presenter.increaseCount()
-        print("[devex] interactor count: \(count)")
     }
 }

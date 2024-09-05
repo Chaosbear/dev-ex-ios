@@ -145,54 +145,6 @@ extension View {
 
     // MARK: - Misc
 
-    /// Original SwiftUI's `.cornerRadius` and `.border` don't concern each other. This function fill this gap.
-    ///
-    func border<S: ShapeStyle>(_ content: S, cornerRadius: CGFloat, width: CGFloat, inset: CGFloat = 0) -> some View { self
-        .mask(Rectangle().cornerRadius(cornerRadius))
-        .overlay(RoundedRectangle(cornerRadius: cornerRadius).inset(by: inset).stroke(content, lineWidth: width))
-    }
-
-    /// borderPathSquare is custom drawing border line of content
-    ///
-    func borderPathSquare(_ height: CGFloat, _ width: CGFloat, _ lineWidth: CGFloat, _ radius: CGFloat, _ frame: CGSize) -> some View { self
-        .overlay(
-            Path { path in
-                path.move(to: CGPoint(x: height, y: 0))
-                path.addLine(to: CGPoint(x: 0, y: 0))
-                path.addLine(to: CGPoint(x: 0, y: width))
-
-                path.move(to: CGPoint(x: frame.height - height, y: 0))
-                path.addLine(to: CGPoint(x: frame.height, y: 0))
-                path.addLine(to: CGPoint(x: frame.height, y: width))
-
-                path.move(to: CGPoint(x: height, y: frame.width))
-                path.addLine(to: CGPoint(x: 0, y: frame.width))
-                path.addLine(to: CGPoint(x: 0, y: frame.width - width))
-
-                path.move(to: CGPoint(x: frame.height - height, y: frame.width))
-                path.addLine(to: CGPoint(x: frame.height, y: frame.width))
-                path.addLine(to: CGPoint(x: frame.height, y: frame.width - width))
-            }
-            .stroke(.white, lineWidth: lineWidth)
-            .cornerRadius(radius)
-        )
-    }
-
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners))
-    }
-
-    func cornerRadiusWithBorder<S: ShapeStyle>(
-        _ content: S,
-        radius: CGFloat,
-        width: CGFloat,
-        corners: UIRectCorner,
-        inset: UIEdgeInsets = .zero
-    ) -> some View { self
-        .clipShape(RoundedCorner(radius: radius, corners: corners))
-        .overlay(RoundedCorner(radius: radius, corners: corners, inset: inset).stroke(content, lineWidth: width))
-    }
-
     func asButton(action: @escaping () -> Void) -> some View {
         Button(action: action) { self }
     }
@@ -301,18 +253,6 @@ struct UiVisualEffectViewAdapter: UIViewRepresentable {
 
     func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
 
-    }
-}
-
-/// Round specific corner link
-struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-    var inset: UIEdgeInsets = .zero
-
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect.inset(by: inset), byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
     }
 }
 

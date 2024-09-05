@@ -14,11 +14,6 @@ class HomePresenter: ObservableObject {
 
     init(index: Int) {
         self.index = index
-        print("[devex] init HomePresenter \(self.index)")
-    }
-
-    deinit {
-        print("[devex] deinit HomePresenter \(index)")
     }
 
     func increaseCount() {

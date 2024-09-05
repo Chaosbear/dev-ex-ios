@@ -32,11 +32,8 @@ class Router: ObservableObject, RouterProtocol {
     static var main = Router(parent: nil)
 
     /// Used to programatically control navigation stack
-    @Published var path: NavigationPath = NavigationPath() {
-        didSet {
-            print("[devex] path: \(path)")
-        }
-    }
+    @Published var path: NavigationPath = NavigationPath()
+
     /// Used to present a view using a sheet
     var presentingSheet: Route?
     /// Used to present a view using a full screen cover
@@ -95,7 +92,7 @@ class Router: ObservableObject, RouterProtocol {
         self.presentingSheet = route
     }
 
-    // Used to present a screen using a full screen cover
+    /// Used to present a screen using a full screen cover
     func presentFullScreen(_ route: Route) {
         self.presentingFullScreenCover = route
     }
@@ -106,17 +103,6 @@ extension Router {
     @ViewBuilder
     func view(for route: Route, type: NavigationType) -> some View {
         switch route {
-        case .home(let args):
-            if let presenter = args.value(key: "presenter") as? HomePresenter,
-               let interactor = args.value(key: "interactor") as? HomeInteractor {
-                HomeView.configure(
-                    presenter: presenter,
-                    interactor: interactor
-                )
-            } else {
-                EmptyView()
-            }
-
         case .viewB(let text):
             VStack(alignment: .center, spacing: 0) {
                 NavBarView(

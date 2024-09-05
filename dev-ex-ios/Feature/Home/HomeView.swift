@@ -8,14 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    // MARK: - Configure
-    static func configure(presenter: HomePresenter, interactor: HomeInteractor) -> HomeView {
-        return HomeView(
-            presenter: presenter,
-            interactor: interactor
-        )
-    }
-
     // MARK: - Property
     @EnvironmentObject var mainRouter: Router
     @EnvironmentObject var theme: ThemeState
@@ -37,14 +29,6 @@ struct HomeView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
             Text("Home \(presenter.index)")
-                .asButton {
-                    let args = RouteArg()
-                    let presenter = HomePresenter(index: presenter.index + 1)
-                    let interactor = HomeInteractor(presenter: presenter)
-                    args.addValue(key: "presenter", value: presenter)
-                    args.addValue(key: "interactor", value: interactor)
-                    mainRouter.navigateTo(.home(args: args))
-                }
             Text("Count \(presenter.count)")
             Text("+")
                 .foregroundStyle(Color.white)
@@ -55,6 +39,26 @@ struct HomeView: View {
                 .asButton {
                     interactor.tapIncrease()
                 }
+
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .top, spacing: -20) {
+                    ForEach(0...8, id: \.self) { index in
+                        Text("Hex \(index)")
+                            .frame(width: 104, height: 90)
+                            .background(Color.blue.opacity(0.4))
+                            .chamferCorner(x: 26, y: 45, corners: .allCorners)
+                            .contentShape(ChampferRectangle(x: 26, y: 45, corners: .allCorners))
+                            .asButton {
+                                print("[devex] index: \(index)")
+                            }
+                            .padding(.top, index % 2 == 0 ? 0 : 45)
+                    }
+                }
+                .padding(.vertical, 2)
+            }
+
+
         }
         .frameExpand(alignment: .center)
         .toolbar(.hidden, for: .navigationBar)

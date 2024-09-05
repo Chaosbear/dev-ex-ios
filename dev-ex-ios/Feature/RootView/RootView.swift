@@ -22,14 +22,6 @@ struct RootView: View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
                 Text("Home")
-                    .asButton {
-                        let args = RouteArg()
-                        let presenter = HomePresenter(index: 0)
-                        let interactor = HomeInteractor(presenter: presenter)
-                        args.addValue(key: "presenter", value: presenter)
-                        args.addValue(key: "interactor", value: interactor)
-                        mainRouter.navigateTo(.home(args: args))
-                    }
                     .frameExpand(alignment: .center)
                     .tag(RootViewTab.home)
                 mockScreen(RootViewTab.search.title)
