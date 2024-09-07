@@ -54,8 +54,12 @@ class RouteArg: Hashable {
 
 // the possible destinations in Router
 enum Route: Hashable, Identifiable {
-    case viewB(String)
-    case viewC(args: RouteArg)
+    case profile(args: RouteArg)
+    case authorProfile(args: RouteArg)
+    case article(args: RouteArg)
+    case course(args: RouteArg)
+    case setting(args: RouteArg)
+    case themeSetting(args: RouteArg)
 
     var id: Route { self }
 }

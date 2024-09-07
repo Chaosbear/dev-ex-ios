@@ -1,26 +1,26 @@
 //
-//  HomeInteractor.swift
+//  SearchInteractor.swift
 //  dev-ex-ios
 //
-//  Created by Sukrit Chatmeeboon on 30/8/2567 BE.
+//  Created by Sukrit Chatmeeboon on 7/9/2567 BE.
 //
 
 import Foundation
 
-protocol HomeInteractorProtocol {
-    var presenter: HomePresenter? { get set }
+protocol SearchInteractorProtocol {
+    var presenter: SearchPresenter? { get set }
 
     func tapIncrease()
 }
 
-class HomeInteractor: HomeInteractorProtocol {
+class SearchInteractor: SearchInteractorProtocol {
 
     // MARK: - Property
-    weak var presenter: HomePresenter?
+    weak var presenter: SearchPresenter?
     private var count = 0
 
     // MARK: - Init
-    init(presenter: HomePresenter?) {
+    init(presenter: SearchPresenter?) {
         self.presenter = presenter
     }
 

@@ -1,13 +1,13 @@
 //
-//  HomePresenter.swift
+//  CoursePresenter.swift
 //  dev-ex-ios
 //
-//  Created by Sukrit Chatmeeboon on 30/8/2567 BE.
+//  Created by Sukrit Chatmeeboon on 7/9/2567 BE.
 //
 
 import Foundation
 
-class HomePresenter: ObservableObject {
+class CoursePresenter: ObservableObject {
     @Published private(set) var index: Int = 0
     @Published private(set) var count: Int = 0
 

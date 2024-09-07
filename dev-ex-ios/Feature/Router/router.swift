@@ -103,28 +103,18 @@ extension Router {
     @ViewBuilder
     func view(for route: Route, type: NavigationType) -> some View {
         switch route {
-        case .viewB(let text):
-            VStack(alignment: .center, spacing: 0) {
-                NavBarView(
-                    title: "\(text) Screen",
-                    hasBackBtn: true,
-                    router: Router.main
-                )
-                VStack(alignment: .center, spacing: 12) {
-                    Text(text)
-                    Text("<< back")
-                        .asButton {
-                            Router.main.navigateBack()
-                        }
-                }
-                .frameExpand(alignment: .center)
-                .background(Color.brown.opacity(0.2))
-            }
-            .toolbar(.hidden, for: .navigationBar)
-        case .viewC:
-            VStack {
-                Text("A")
-            }
+        case .profile(let args):
+            ProfileView.view(args)
+        case .authorProfile(let args):
+            AuthorProfileView.view(args)
+        case .article(let args):
+            ArticleView.view(args)
+        case .course(let args):
+            CourseView.view(args)
+        case .setting(let args):
+            SettingView.view(args)
+        case .themeSetting(let args):
+            ThemeSettingView.view(args)
         }
     }
 }

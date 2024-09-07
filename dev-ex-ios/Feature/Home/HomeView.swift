@@ -12,20 +12,21 @@ struct HomeView: View {
     @EnvironmentObject var mainRouter: Router
     @EnvironmentObject var theme: ThemeState
 
-    @StateObject private var presenter: HomePresenter
-    @State private var interactor: HomeInteractorProtocol
+    @ObservedObject private var presenter: HomePresenter
+    private var interactor: HomeInteractorProtocol
 
     // MARK: - Init
     init(
         presenter: HomePresenter,
         interactor: HomeInteractorProtocol
     ) {
-        self._presenter = StateObject(wrappedValue: presenter)
-        self._interactor = State(wrappedValue: interactor)
+        self.presenter = presenter
+        self.interactor = interactor
     }
 
     // MARK: - Text Style
 
+    // MARK: - UI Body
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
             Text("Home \(presenter.index)")
@@ -39,7 +40,6 @@ struct HomeView: View {
                 .asButton {
                     interactor.tapIncrease()
                 }
-
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: -20) {
@@ -57,11 +57,15 @@ struct HomeView: View {
                 }
                 .padding(.vertical, 2)
             }
-
-
         }
         .frameExpand(alignment: .center)
-        .toolbar(.hidden, for: .navigationBar)
+    }
 
+    // MARK: - UI Component
+    @ViewBuilder
+    private var navbar: some View {
+        HStack {
+
+        }
     }
 }

@@ -1,26 +1,26 @@
 //
-//  HomeInteractor.swift
+//  CourseInteractor.swift
 //  dev-ex-ios
 //
-//  Created by Sukrit Chatmeeboon on 30/8/2567 BE.
+//  Created by Sukrit Chatmeeboon on 7/9/2567 BE.
 //
 
 import Foundation
 
-protocol HomeInteractorProtocol {
-    var presenter: HomePresenter? { get set }
+protocol CourseInteractorProtocol {
+    var presenter: CoursePresenter? { get set }
 
     func tapIncrease()
 }
 
-class HomeInteractor: HomeInteractorProtocol {
+class CourseInteractor: CourseInteractorProtocol {
 
     // MARK: - Property
-    weak var presenter: HomePresenter?
+    weak var presenter: CoursePresenter?
     private var count = 0
 
     // MARK: - Init
-    init(presenter: HomePresenter?) {
+    init(presenter: CoursePresenter?) {
         self.presenter = presenter
     }
 

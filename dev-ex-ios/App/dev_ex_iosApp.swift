@@ -33,13 +33,13 @@ struct DevExIosApp: App {
                 LaunchScreenView()
                     .transition(.opacity.animation(.default))
                     .onViewDidLoad {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                             isLaunching = false
                         }
                     }
             } else {
                 RouterView(router: mainRouter) {
-                    RootView()
+                    RootView.view()
                 }
                 .transition(.opacity.animation(.default))
                 .environmentObject(theme)

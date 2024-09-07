@@ -7,12 +7,6 @@
     "+" : {
 
     },
-    "<< back" : {
-
-    },
-    "A" : {
-
-    },
     "Add Item" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -30,13 +24,19 @@
         }
       }
     },
+    "ArticleView %lld" : {
+
+    },
+    "AuthorProfileView %lld" : {
+
+    },
     "Count %lld" : {
 
     },
-    "Hex %lld" : {
+    "CourseView %lld" : {
 
     },
-    "Home" : {
+    "Hex %lld" : {
 
     },
     "Home %lld" : {
@@ -59,6 +59,18 @@
         }
       }
     },
+    "Library %lld" : {
+
+    },
+    "Notification %lld" : {
+
+    },
+    "ProfileView %lld" : {
+
+    },
+    "Search %lld" : {
+
+    },
     "Select an item" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -76,7 +88,10 @@
         }
       }
     },
-    "View %lld" : {
+    "SettingView %lld" : {
+
+    },
+    "ThemeSettingView %lld" : {
 
     }
   },
