@@ -7,11 +7,12 @@
 
 import Foundation
 
+@MainActor
 class HomePresenter: ObservableObject {
     @Published private(set) var index: Int = 0
     @Published private(set) var count: Int = 0
 
-    func increaseCount() {
+    func increaseCount() async {
         count += 1
     }
 }

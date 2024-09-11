@@ -27,6 +27,8 @@ class HomeInteractor: HomeInteractorProtocol {
     // MARK: - Event
     func tapIncrease() {
         count += 1
-        presenter?.increaseCount()
+        Task {
+            await presenter?.increaseCount()
+        }
     }
 }
