@@ -38,7 +38,7 @@ extension ArticleListModel: Codable {
 struct ArticleModel {
     var productId: String
     var title: String
-    var descripiton: String
+    var descripton: String
     var image: String?
     var updatedAt: String
     var authorName: String
@@ -50,7 +50,7 @@ struct ArticleModel {
     init(
         productId: String = "",
         title: String = "",
-        descripiton: String = "",
+        descripton: String = "",
         image: String? = nil,
         updatedAt: String = "",
         authorName: String = "",
@@ -61,7 +61,7 @@ struct ArticleModel {
     ) {
         self.productId = productId
         self.title = title
-        self.descripiton = descripiton
+        self.descripton = descripton
         self.image = image
         self.updatedAt = updatedAt
         self.authorName = authorName
@@ -77,7 +77,7 @@ extension ArticleModel: Codable {
     enum CodingKeys: String, CodingKey {
         case productId = "productId"
         case title = "title"
-        case descripiton = "descripiton"
+        case descripton = "descripton"
         case image = "image"
         case updatedAt = "updatedAt"
         case authorName = "authorName"
@@ -93,7 +93,7 @@ extension ArticleModel: Codable {
         do {
             self.productId = try map.decodeIfPresent(String.self, forKey: .productId) ?? ""
             self.title = try map.decodeIfPresent(String.self, forKey: .title) ?? ""
-            self.descripiton = try map.decodeIfPresent(String.self, forKey: .descripiton) ?? ""
+            self.descripton = try map.decodeIfPresent(String.self, forKey: .descripton) ?? ""
             self.image = try map.decodeIfPresent(String?.self, forKey: .image) ?? nil
             self.updatedAt = try map.decodeIfPresent(String.self, forKey: .updatedAt) ?? ""
             self.authorName = try map.decodeIfPresent(String.self, forKey: .authorName) ?? ""

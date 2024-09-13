@@ -78,12 +78,13 @@ struct HomeView: View {
             Image(systemName: "person.crop.circle")
                 .resizable()
                 .renderingMode(.template)
-                .frame(width: 40, height: 40)
+                .frame(width: 36, height: 36)
                 .foregroundStyle(Color.gray)
                 .clipShape(.circle)
-                .frame(height: 56)
+                .frame(height: 56, alignment: .center)
                 .padding(.leading, sidePadding)
                 .padding(.trailing, 12)
+                .contentShape(.rect)
                 .asButton {
                     print("go to setting")
                 }

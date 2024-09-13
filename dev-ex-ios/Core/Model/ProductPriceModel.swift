@@ -8,7 +8,7 @@
 import Foundation
 
 struct ProductPriceModel {
-    var price: Double
+    var total: Double
     var originalPrice: Double
     var discount: Double?
     var discountPercent: Double?
@@ -16,26 +16,34 @@ struct ProductPriceModel {
     var currencySymbol: String
 
     init(
-        price: Double = 0,
+        total: Double = 0,
         originalPrice: Double = 0,
         discount: Double? = nil,
         discountPercent: Double? = nil,
         currency: String = "",
         currencySymbol: String = ""
     ) {
-        self.price = price
+        self.total = total
         self.originalPrice = originalPrice
         self.discount = discount
         self.discountPercent = discountPercent
         self.currency = currency
         self.currencySymbol = currencySymbol
     }
+
+    func isFree() -> Bool {
+        originalPrice <= 0
+    }
+
+    func isDiscounting() -> Bool {
+        guard let discount = discount else { return false }
+        return discount > 0
+    }
 }
 
 extension ProductPriceModel: Codable {
-
     enum CodingKeys: String, CodingKey {
-        case price = "price"
+        case total = "total"
         case originalPrice = "originalPrice"
         case discount = "discount"
         case discountPercent = "discountPercent"
@@ -47,7 +55,7 @@ extension ProductPriceModel: Codable {
         let map = try decoder.container(keyedBy: CodingKeys.self)
 
         do {
-            self.price = try map.decodeIfPresent(Double.self, forKey: .price) ?? 0
+            self.total = try map.decodeIfPresent(Double.self, forKey: .total) ?? 0
             self.originalPrice = try map.decodeIfPresent(Double.self, forKey: .originalPrice) ?? 0
             self.discount = try map.decodeIfPresent(Double?.self, forKey: .discount) ?? nil
             self.discountPercent = try map.decodeIfPresent(Double?.self, forKey: .discountPercent) ?? nil

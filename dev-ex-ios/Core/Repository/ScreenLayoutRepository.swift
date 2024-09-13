@@ -8,11 +8,11 @@
 import Foundation
 
 protocol ScreenLayoutRepositoryProtocol {
-    func getHomeScreenLayout() async -> ScreenLayoutModel
+    func getHomeScreenLayout() async -> (ScreenLayoutModel, ApiResponseStatusModel)
 }
 
 struct MockScreenLayoutRepository: ScreenLayoutRepositoryProtocol {
-    func getHomeScreenLayout() async -> ScreenLayoutModel {
-        return ScreenLayoutModel(totalSection: 8, list: [])
+    func getHomeScreenLayout() async -> (ScreenLayoutModel, ApiResponseStatusModel) {
+        return (ScreenLayoutModel(totalSection: 8, list: []), ApiResponseStatusModel(true, nil, 200))
     }
 }

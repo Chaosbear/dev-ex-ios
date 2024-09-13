@@ -38,7 +38,7 @@ extension CourseListModel: Codable {
 struct CourseModel {
     var productId: String
     var title: String
-    var descripiton: String
+    var descripton: String
     var image: String?
     var updatedAt: String
     var authorName: String
@@ -48,12 +48,13 @@ struct CourseModel {
     var totalStudent: Int
     var rating: Double
     var totalReviewer: Int
+    var duration: Int
     var price: ProductPriceModel
 
     init(
         productId: String = "",
         title: String = "",
-        descripiton: String = "",
+        descripton: String = "",
         image: String? = nil,
         updatedAt: String = "",
         authorName: String = "",
@@ -63,11 +64,12 @@ struct CourseModel {
         totalStudent: Int = 0,
         rating: Double = 0,
         totalReviewer: Int = 0,
+        duration: Int = 0,
         price: ProductPriceModel = .init()
     ) {
         self.productId = productId
         self.title = title
-        self.descripiton = descripiton
+        self.descripton = descripton
         self.image = image
         self.updatedAt = updatedAt
         self.authorName = authorName
@@ -77,6 +79,7 @@ struct CourseModel {
         self.totalStudent = totalStudent
         self.rating = rating
         self.totalReviewer = totalReviewer
+        self.duration = duration
         self.price = price
     }
 }
@@ -86,7 +89,7 @@ extension CourseModel: Codable {
     enum CodingKeys: String, CodingKey {
         case productId = "productId"
         case title = "title"
-        case descripiton = "descripiton"
+        case descripton = "descripton"
         case image = "image"
         case updatedAt = "updatedAt"
         case authorName = "authorName"
@@ -96,6 +99,7 @@ extension CourseModel: Codable {
         case totalStudent = "totalStudent"
         case rating = "rating"
         case totalReviewer = "totalReviewer"
+        case duration = "duration"
         case price = "price"
     }
 
@@ -105,7 +109,7 @@ extension CourseModel: Codable {
         do {
             self.productId = try map.decodeIfPresent(String.self, forKey: .productId) ?? ""
             self.title = try map.decodeIfPresent(String.self, forKey: .title) ?? ""
-            self.descripiton = try map.decodeIfPresent(String.self, forKey: .descripiton) ?? ""
+            self.descripton = try map.decodeIfPresent(String.self, forKey: .descripton) ?? ""
             self.image = try map.decodeIfPresent(String?.self, forKey: .image) ?? nil
             self.updatedAt = try map.decodeIfPresent(String.self, forKey: .updatedAt) ?? ""
             self.authorName = try map.decodeIfPresent(String.self, forKey: .authorName) ?? ""
@@ -115,6 +119,7 @@ extension CourseModel: Codable {
             self.totalStudent = try map.decodeIfPresent(Int.self, forKey: .totalStudent) ?? 0
             self.rating = try map.decodeIfPresent(Double.self, forKey: .rating) ?? 0
             self.totalReviewer = try map.decodeIfPresent(Int.self, forKey: .totalReviewer) ?? 0
+            self.duration = try map.decodeIfPresent(Int.self, forKey: .duration) ?? 0
             self.price = try map.decodeIfPresent(ProductPriceModel.self, forKey: .price) ?? .init()
         } catch {
             self = Self()

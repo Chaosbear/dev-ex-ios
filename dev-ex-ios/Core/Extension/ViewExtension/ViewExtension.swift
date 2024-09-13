@@ -104,15 +104,6 @@ extension View {
             .clipped()
     }
 
-    func padding(
-        cssPadding top: CGFloat?, _ trailing: CGFloat?, _ bottom: CGFloat?, _ leading: CGFloat?
-    ) -> some View { self
-        .padding(.top, top)
-        .padding(.trailing, trailing)
-        .padding(.bottom, bottom)
-        .padding(.leading, leading)
-    }
-
     func padding(css top: CGFloat, _ trailing: CGFloat, _ bottom: CGFloat, _ leading: CGFloat
     ) -> some View { self
         .padding(EdgeInsets(
@@ -121,14 +112,6 @@ extension View {
             bottom: bottom,
             trailing: trailing
         ))
-    }
-
-    func padding(cssPadding top: CGFloat?, _ horizontal: CGFloat?, _ bottom: CGFloat?) -> some View { self
-        .padding(cssPadding: top, horizontal, bottom, horizontal)
-    }
-
-    func padding(cssPadding vertical: CGFloat?, _ horizontal: CGFloat?) -> some View { self
-        .padding(cssPadding: vertical, horizontal, vertical)
     }
 
     func fixedSize(_ axis: Axis.Set) -> some View { self

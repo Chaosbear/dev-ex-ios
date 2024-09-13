@@ -16,6 +16,7 @@ protocol ColorSystemProtocol {
     var background: Color { get }
     var surface: Color { get }
     var surfaceOn: Color { get }
+    var shadow: Color { get }
 
     var success: Color { get }
     var warning: Color { get }
@@ -48,6 +49,7 @@ struct DefaultColorTheme: ColorSystemProtocol {
     var success = Color(Palette.tealishGreen)
     var warning = Color(Palette.goldenGlow)
     var error = Color(Palette.carminePink)
+    var shadow = Color(Palette.gainboroGray)
 
     var h1 = Color(light: Palette.nightRiderGray, night: Palette.whiteSmoke)
     var h2 = Color(light: Palette.nightRiderGray, night: Palette.whiteSmoke)

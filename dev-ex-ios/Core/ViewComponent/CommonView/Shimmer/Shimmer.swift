@@ -52,9 +52,9 @@ struct Shimmer: ViewModifier {
     // A default gradient for the animated mask.
     static func defaultGradient() -> Gradient {
         Gradient(colors: [
-            Color.gray,
+            Color(Palette.whiteSmoke),
             Color.white,
-            Color.gray
+            Color(Palette.whiteSmoke)
         ])
     }
 

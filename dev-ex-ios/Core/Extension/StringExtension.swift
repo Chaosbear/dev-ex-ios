@@ -50,4 +50,16 @@ extension String {
         let digest = Insecure.MD5.hash(data: self.data(using: .utf8) ?? Data())
         return digest.map { String(format: "%02hhx", $0) }.joined()
     }
+
+    func encodeUrl() -> String? {
+        if let decomposedString = self.removingPercentEncoding, decomposedString != self {
+            return self
+        } else {
+            return addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        }
+    }
+
+    func imageUrl() -> URL? {
+        return encodeUrl().map { URL(string: $0)} ?? nil
+    }
 }
