@@ -9,10 +9,27 @@ import Foundation
 
 @MainActor
 class HomePresenter: ObservableObject {
-    @Published private(set) var index: Int = 0
-    @Published private(set) var count: Int = 0
+    // MARK: - Property
+    // data
+    @Published private(set) var sectionList: [ScreenSectionItemModel] = []
 
-    func increaseCount() async {
-        count += 1
+    // loading state
+    @Published private(set) var isShowSkeleton = true
+
+    // error state
+    @Published private(set) var errorState: ApiErrorState = .noError
+
+    // MARK: - Init
+    init(sectionList: [ScreenSectionItemModel] = []) {
+        self.sectionList = sectionList
+    }
+
+    // MARK: - Event
+    func setData(_ list: [ScreenSectionItemModel], _ errState: ApiErrorState) async {
+        sectionList = list
+        errorState = errState
+        if isShowSkeleton {
+            isShowSkeleton = false
+        }
     }
 }

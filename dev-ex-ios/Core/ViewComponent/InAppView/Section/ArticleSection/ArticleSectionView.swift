@@ -50,6 +50,8 @@ struct ArticleSectionView: View {
                 Text(title)
                     .modifier(titleTextStyle)
                     .lineLimit(1)
+                    .frameHorizontalExpand(alignment: .leading)
+                    .padding(.horizontal, sidePadding)
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 12) {

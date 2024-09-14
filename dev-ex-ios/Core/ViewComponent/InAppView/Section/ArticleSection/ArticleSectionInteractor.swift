@@ -38,7 +38,6 @@ class ArticleSectionInteractor: ArticleSectionInteractorProtocol {
     // MARK: - Event
     func getList() async {
         guard !isLoadingList else { return }
-        defer { isLoadingList = false }
         isLoadingList = true
 
         let data = await articleRepo.getArticleList(model, page: 1)
@@ -47,5 +46,7 @@ class ArticleSectionInteractor: ArticleSectionInteractorProtocol {
         }
 
         await presenter?.setData(model.title, list)
+
+        isLoadingList = false
     }
 }

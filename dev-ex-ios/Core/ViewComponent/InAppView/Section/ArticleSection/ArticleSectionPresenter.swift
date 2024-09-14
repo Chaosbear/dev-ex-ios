@@ -14,10 +14,10 @@ class ArticleSectionPresenter: ObservableObject {
     @Published private(set) var articleList: [ArticleCardData] = []
 
     // MARK: - Init
-    init(sectionTitle: String? = nil, articleList: [ArticleCardData] = []) {
-        self.sectionTitle = sectionTitle
-        self.articleList = articleList
-    }
+//    init(sectionTitle: String? = nil, articleList: [ArticleCardData] = []) {
+//        self.sectionTitle = sectionTitle
+//        self.articleList = articleList
+//    }
 
     // MARK: - Event
     func setData(_ title: String?, _ list: [ArticleCardData]) async {

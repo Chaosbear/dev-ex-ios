@@ -13,9 +13,21 @@ protocol CourseRepositoryProtocol {
 
 struct MockCourseRepository: CourseRepositoryProtocol {
     func getCourseList(_ model: ScreenSectionModel, page: Int) async -> CourseListModel {
+        let mockCourse = MockData.course
         return CourseListModel(
             page: .init(),
-            list: []
+            list: [
+                mockCourse,
+                mockCourse,
+                mockCourse,
+                mockCourse,
+                mockCourse,
+                mockCourse,
+                mockCourse,
+                mockCourse,
+                mockCourse,
+                mockCourse
+            ]
         )
     }
 }

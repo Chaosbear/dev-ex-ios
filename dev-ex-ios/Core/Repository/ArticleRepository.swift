@@ -13,9 +13,21 @@ protocol ArticleRepositoryProtocol {
 
 struct MockArticleRepository: ArticleRepositoryProtocol {
     func getArticleList(_ model: ScreenSectionModel, page: Int) async -> ArticleListModel {
+        let mockArticle = MockData.article
         return ArticleListModel(
             page: .init(),
-            list: []
+            list: [
+                mockArticle,
+                mockArticle,
+                mockArticle,
+                mockArticle,
+                mockArticle,
+                mockArticle,
+                mockArticle,
+                mockArticle,
+                mockArticle,
+                mockArticle
+            ]
         )
     }
 }

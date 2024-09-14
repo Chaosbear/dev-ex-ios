@@ -42,16 +42,10 @@
     "CourseView %lld" : {
 
     },
-    "Hello, World!" : {
-
-    },
     "Hex %lld" : {
 
     },
     "Home" : {
-
-    },
-    "Home %lld" : {
 
     },
     "Item at %@" : {

@@ -38,7 +38,6 @@ class CourseSectionInteractor: CourseSectionInteractorProtocol {
     // MARK: - Event
     func getList() async {
         guard !isLoadingList else { return }
-        defer { isLoadingList = false }
         isLoadingList = true
 
         let data = await courseRepo.getCourseList(model, page: 1)
@@ -47,5 +46,7 @@ class CourseSectionInteractor: CourseSectionInteractorProtocol {
         }
 
         await presenter?.setData(model.title, list)
+
+        isLoadingList = false
     }
 }

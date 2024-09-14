@@ -31,6 +31,10 @@ struct ScreenSectionModel {
         self.url = url
         self.parameter = parameter
     }
+
+    func getType() -> ScreenSectionType? {
+        ScreenSectionType.init(rawValue: type)
+    }
 }
 
 extension ScreenSectionModel: Codable {

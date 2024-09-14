@@ -186,18 +186,7 @@ struct ArticleCardView: View {
 #Preview {
     ScrollView(.horizontal) {
         HStack(alignment: .top, spacing: 12) {
-            let mock = ArticleModel(
-                productId: "aaaaa",
-                title: "Article Card Data Previews",
-                descripton: "AsyncImage view uses the shared URLSession instance to load an image from the specified URL, and then display it. For example, you can display an icon that’s stored on a server",
-                image: nil,
-                updatedAt: "2024-08-05T00:00:00+07:00",
-                authorName: "Anonymous Handsome Author",
-                authorUserId: 1,
-                authorImage: "",
-                engagement: .init(liked: 9860, disLiked: 20, comment: 123),
-                price: .init()
-            )
+            let mock = MockData.article
             ArticleCardView(data: .init(id: 0, model: mock), pressAction: {})
                 .frame(width: 320)
             ArticleCardView(data: .init(id: 1, model: mock), pressAction: {})

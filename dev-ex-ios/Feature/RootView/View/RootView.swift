@@ -15,7 +15,10 @@ struct RootView: View {
         rootInteractor.presenter = rootPresenter
 
         let homePresenter = HomePresenter()
-        let homeInteractor = HomeInteractor(presenter: homePresenter)
+        let homeInteractor = HomeInteractor(
+            presenter: homePresenter,
+            layoutRepo: MockScreenLayoutRepository()
+        )
 
         let searchPresenter = SearchPresenter()
         let searchInteractor = SearchInteractor(presenter: searchPresenter)
@@ -135,6 +138,9 @@ struct RootView: View {
         }
         .background(theme.color.background, ignoresSafeAreaEdges: [.horizontal, .bottom])
         .background(theme.color.background)
+        .onViewDidLoad {
+            homeInteractor.getData()
+        }
     }
 
     // MARK: - UI Component

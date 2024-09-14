@@ -13,6 +13,30 @@ protocol ScreenLayoutRepositoryProtocol {
 
 struct MockScreenLayoutRepository: ScreenLayoutRepositoryProtocol {
     func getHomeScreenLayout() async -> (ScreenLayoutModel, ApiResponseStatusModel) {
-        return (ScreenLayoutModel(totalSection: 8, list: []), ApiResponseStatusModel(true, nil, 200))
+        let mockUserShortCut = ScreenSectionModel(
+            type: "userShortCut"
+        )
+        let mockArticle = ScreenSectionModel(
+            type: "horizontalArticle",
+            title: "Recently Read Article"
+        )
+        let mockBanner = ScreenSectionModel(
+            type: "carouselBanner"
+        )
+        let mockArticle2 = ScreenSectionModel(
+            type: "horizontalArticle",
+            title: "Recoomend Article"
+        )
+        let mockCourse = ScreenSectionModel(
+            type: "horizontalCourse",
+            title: "Recoomend Course"
+        )
+        return (ScreenLayoutModel(totalSection: 5, list: [
+            mockUserShortCut,
+            mockArticle,
+            mockBanner,
+            mockArticle2,
+            mockCourse
+        ]), ApiResponseStatusModel(true, nil, 200))
     }
 }

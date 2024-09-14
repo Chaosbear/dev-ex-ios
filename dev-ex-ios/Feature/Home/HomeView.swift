@@ -37,36 +37,10 @@ struct HomeView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
             navbar
-
-            ScrollView(showsIndicators: true) {
-                Text("Home \(presenter.index)")
-                Text("Count \(presenter.count)")
-                Text("+")
-                    .foregroundStyle(Color.white)
-                    .frame(width: 80, height: 50, alignment: .center)
-                    .background(Color.blue)
-                    .cornerRadius(8, corners: .allCorners)
-                    .contentShape(.rect)
-                    .asButton {
-                        interactor.tapIncrease()
-                    }
-
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .top, spacing: -20) {
-                        ForEach(0...8, id: \.self) { index in
-                            Text("Hex \(index)")
-                                .frame(width: 104, height: 90)
-                                .background(Color.blue.opacity(0.4))
-                                .chamferCorner(x: 26, y: 45, corners: .allCorners)
-                                .contentShape(ChampferRectangle(x: 26, y: 45, corners: .allCorners))
-                                .asButton {
-                                    print("[devex] index: \(index)")
-                                }
-                                .padding(.top, index % 2 == 0 ? 0 : 45)
-                        }
-                    }
-                    .padding(.vertical, 2)
-                }
+            if presenter.isShowSkeleton {
+                contentSkeleton
+            } else {
+                content
             }
         }
     }
@@ -94,5 +68,80 @@ struct HomeView: View {
                 .padding(.trailing, sidePadding)
         }
         .frame(height: 56, alignment: .center)
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        ScrollView(.vertical, showsIndicators: true) {
+            VStack(alignment: .leading, spacing: 0) {
+                ForEach(presenter.sectionList.indices, id: \.self) { index in
+                    if let section = presenter.sectionList[safe: index] {
+                        switch section.type {
+                        case .userShortCut: userShortCutSection
+                        case .carouselBanner: EmptyView()
+                        case .horizontalArticle: articleSection(section)
+                        case .horizontalCourse: courseSection(section)
+                        }
+                    }
+                }
+            }
+            .padding(.bottom, 60)
+        }
+    }
+
+    @ViewBuilder
+    private var userShortCutSection: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: -20) {
+                ForEach(0...8, id: \.self) { index in
+                    Text("Hex \(index)")
+                        .frame(width: 104, height: 90)
+                        .background(Color.blue.opacity(0.4))
+                        .chamferCorner(x: 26, y: 45, corners: .allCorners)
+                        .contentShape(ChampferRectangle(x: 26, y: 45, corners: .allCorners))
+                        .asButton {
+                            print("[devex] index: \(index)")
+                        }
+                        .padding(.top, index % 2 == 0 ? 0 : 45)
+                }
+            }
+            .padding(.vertical, 2)
+        }
+        .padding(.vertical, 16)
+    }
+
+    @ViewBuilder
+    private func articleSection(_ section: ScreenSectionItemModel) -> some View {
+        if let presenter = section.presenter as? ArticleSectionPresenter,
+           let interactor = section.interactor as? ArticleSectionInteractorProtocol {
+            ArticleSectionView(
+                presenter: presenter,
+                interactor: interactor,
+                router: mainRouter
+            )
+        } else {
+            EmptyView()
+        }
+    }
+
+    @ViewBuilder
+    private func courseSection(_ section: ScreenSectionItemModel) -> some View {
+        if let presenter = section.presenter as? CourseSectionPresenter,
+           let interactor = section.interactor as? CourseSectionInteractorProtocol {
+            CourseSectionView(
+                presenter: presenter,
+                interactor: interactor,
+                router: mainRouter
+            )
+        } else {
+            EmptyView()
+        }
+    }
+
+    @ViewBuilder
+    private var contentSkeleton: some View {
+        ProgressView()
+            .controlSize(.large)
+            .frameExpand()
     }
 }
