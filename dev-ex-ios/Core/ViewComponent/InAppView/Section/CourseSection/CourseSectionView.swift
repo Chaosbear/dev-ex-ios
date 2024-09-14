@@ -33,7 +33,7 @@ struct CourseSectionView: View {
     )}
 
     // MARK: - Layout
-    private let sidePadding: CGFloat = isPhoneGlobal ? 12 : 40
+    private let sidePadding: CGFloat = isPhoneGlobal ? 16 : 40
     private var cardWidth: CGFloat {
         if let deviceWidth = UIScreen.current?.deviceWidth() {
             let idealWidth = deviceWidth * 0.8

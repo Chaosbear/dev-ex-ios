@@ -93,6 +93,11 @@ struct CourseCardView: View {
         .background(theme.color.surface)
         .cornerRadius(12, corners: .allCorners)
         .shadow(color: theme.color.shadow, radius: 2, x: 1, y: 2)
+        .compositingGroup()
+        .contentShape(.rect)
+        .asButton {
+            pressAction()
+        }
     }
 
     // MARK: - UI Component

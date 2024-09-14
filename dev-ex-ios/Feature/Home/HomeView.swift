@@ -14,6 +14,7 @@ struct HomeView: View {
 
     @ObservedObject private var presenter: HomePresenter
     private var interactor: HomeInteractorProtocol
+    private let isPhone = isPhoneGlobal
 
     // MARK: - Init
     init(
@@ -32,6 +33,14 @@ struct HomeView: View {
 
     // MARK: - Layout
     private let sidePadding: CGFloat = isPhoneGlobal ? 12 : 40
+    private var bannerWidth: CGFloat {
+        if let deviceWidth = UIScreen.current?.deviceWidth() {
+            let idealWidth = deviceWidth * 0.8
+            return idealWidth > 320 ? 320 : idealWidth
+        } else {
+            return 320
+        }
+    }
 
     // MARK: - UI Body
     var body: some View {
@@ -77,10 +86,18 @@ struct HomeView: View {
                 ForEach(presenter.sectionList.indices, id: \.self) { index in
                     if let section = presenter.sectionList[safe: index] {
                         switch section.type {
-                        case .userShortCut: userShortCutSection
-                        case .carouselBanner: EmptyView()
-                        case .horizontalArticle: articleSection(section)
-                        case .horizontalCourse: courseSection(section)
+                        case .userShortCut: 
+                            userShortCutSection
+                                .padding(.bottom, 12)
+                        case .carouselBanner:
+                            bannerSection
+                                .padding(.bottom, 12)
+                        case .horizontalArticle:
+                            articleSection(section)
+                                .padding(.bottom, 12)
+                        case .horizontalCourse:
+                            courseSection(section)
+                                .padding(.bottom, 12)
                         }
                     }
                 }
@@ -96,8 +113,9 @@ struct HomeView: View {
                 ForEach(0...8, id: \.self) { index in
                     Text("Hex \(index)")
                         .frame(width: 104, height: 90)
-                        .background(Color.blue.opacity(0.4))
+                        .background(theme.color.surface)
                         .chamferCorner(x: 26, y: 45, corners: .allCorners)
+                        .shadow(color: theme.color.shadow, radius: 2, x: 1, y: 2)
                         .contentShape(ChampferRectangle(x: 26, y: 45, corners: .allCorners))
                         .asButton {
                             print("[devex] index: \(index)")
@@ -106,8 +124,35 @@ struct HomeView: View {
                 }
             }
             .padding(.vertical, 2)
+            .padding(.horizontal, isPhone ? 16 : 40)
         }
-        .padding(.vertical, 16)
+        .padding(.vertical, 14)
+    }
+
+    @ViewBuilder
+    private var bannerSection: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: 12) {
+                ForEach(0...8, id: \.self) { index in
+                    AsyncImage(url: nil) { phase in
+                        if let image = phase.image {
+                            image
+                                .resizable()
+                                .scaledToFill()
+                        } else if phase.error != nil {
+                            AltImageView(maxWidth: 120)
+                        } else {
+                            AltImageView(maxWidth: 120)
+                        }
+                    }
+                    .frame(width: bannerWidth, height: bannerWidth / 2)
+                    .cornerRadius(12, corners: .allCorners)
+                }
+            }
+            .padding(.vertical, 2)
+            .padding(.horizontal, 16)
+        }
+        .padding(.vertical, 14)
     }
 
     @ViewBuilder
