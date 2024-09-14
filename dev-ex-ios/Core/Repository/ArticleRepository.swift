@@ -8,11 +8,11 @@
 import Foundation
 
 protocol ArticleRepositoryProtocol {
-    func getArticleList(_ model: ScreenSectionModel) async -> ArticleListModel
+    func getArticleList(_ model: ScreenSectionModel, page: Int) async -> ArticleListModel
 }
 
-struct MockArticleRepositoryRepository: ArticleRepositoryProtocol {
-    func getArticleList(_ model: ScreenSectionModel) async -> ArticleListModel {
+struct MockArticleRepository: ArticleRepositoryProtocol {
+    func getArticleList(_ model: ScreenSectionModel, page: Int) async -> ArticleListModel {
         return ArticleListModel(
             page: .init(),
             list: []

@@ -10,11 +10,18 @@ import Foundation
 @MainActor
 class ArticleSectionPresenter: ObservableObject {
     // MARK: - Property
-    @Published private(set) var section: ScreenSectionModel?
+    @Published private(set) var sectionTitle: String?
     @Published private(set) var articleList: [ArticleCardData] = []
 
+    // MARK: - Init
+    init(sectionTitle: String? = nil, articleList: [ArticleCardData] = []) {
+        self.sectionTitle = sectionTitle
+        self.articleList = articleList
+    }
+
     // MARK: - Event
-    func setArticleList(_ list: [ArticleCardData]) async {
+    func setData(_ title: String?, _ list: [ArticleCardData]) async {
+        sectionTitle = title
         articleList = list
     }
 }

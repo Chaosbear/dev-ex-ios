@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct CourseCardData {
+struct CourseCardData: Identifiable {
+    let id: Int
     let model: CourseModel
 
     let title: String
@@ -21,7 +22,8 @@ struct CourseCardData {
     let price: String?
     let originalPrice: String?
 
-    init(model: CourseModel) {
+    init(id: Int, model: CourseModel) {
+        self.id = id
         self.model = model
         self.title = model.title
         self.image = model.image?.imageUrl()
@@ -61,6 +63,12 @@ struct CourseCardView: View {
     private let data: CourseCardData
     private let pressAction: () -> Void
 
+    // MARK: - Init
+    init(data: CourseCardData, pressAction: @escaping () -> Void) {
+        self.data = data
+        self.pressAction = pressAction
+    }
+
     // MARK: - Text Style
     private var titleTextStyle: TextStyler { TextStyler(
         font: theme.font.h4.bold,
@@ -74,12 +82,6 @@ struct CourseCardView: View {
         font: theme.font.body2.regular,
         color: theme.color.body1
     )}
-
-    // MARK: - Init
-    init(data: CourseCardData, pressAction: @escaping () -> Void) {
-        self.data = data
-        self.pressAction = pressAction
-    }
 
     // MARK: - UI Body
     var body: some View {
@@ -186,11 +188,11 @@ struct CourseCardView: View {
                 duration: 24000,
                 price: .init()
             )
-            CourseCardView(data: .init(model: mock), pressAction: {})
+            CourseCardView(data: .init(id: 0, model: mock), pressAction: {})
                 .frame(width: 320)
-            CourseCardView(data: .init(model: mock), pressAction: {})
+            CourseCardView(data: .init(id: 1, model: mock), pressAction: {})
                 .frame(width: 320)
-            CourseCardView(data: .init(model: mock), pressAction: {})
+            CourseCardView(data: .init(id: 2, model: mock), pressAction: {})
                 .frame(width: 320)
         }
         .padding(12)

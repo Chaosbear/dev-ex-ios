@@ -8,11 +8,11 @@
 import Foundation
 
 protocol CourseRepositoryProtocol {
-    func getCourseList(_ model: ScreenSectionModel) async -> CourseListModel
+    func getCourseList(_ model: ScreenSectionModel, page: Int) async -> CourseListModel
 }
 
-struct MockCourseRepositoryRepository: CourseRepositoryProtocol {
-    func getCourseList(_ model: ScreenSectionModel) async -> CourseListModel {
+struct MockCourseRepository: CourseRepositoryProtocol {
+    func getCourseList(_ model: ScreenSectionModel, page: Int) async -> CourseListModel {
         return CourseListModel(
             page: .init(),
             list: []

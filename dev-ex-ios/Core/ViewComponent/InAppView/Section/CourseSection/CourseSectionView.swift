@@ -1,24 +1,24 @@
 //
-//  ArticleSectionView.swift
+//  CourseSectionView.swift
 //  dev-ex-ios
 //
-//  Created by Sukrit Chatmeeboon on 13/9/2567 BE.
+//  Created by Sukrit Chatmeeboon on 14/9/2567 BE.
 //
 
 import SwiftUI
 
-struct ArticleSectionView: View {
+struct CourseSectionView: View {
     // MARK: - Property
     @EnvironmentObject var theme: ThemeState
 
-    @ObservedObject private var presenter: ArticleSectionPresenter
-    private var interactor: ArticleSectionInteractorProtocol
+    @ObservedObject private var presenter: CourseSectionPresenter
+    private var interactor: CourseSectionInteractorProtocol
     private var router: Router
 
     // MARK: - Init
     init(
-        presenter: ArticleSectionPresenter,
-        interactor: ArticleSectionInteractorProtocol,
+        presenter: CourseSectionPresenter,
+        interactor: CourseSectionInteractorProtocol,
         router: Router
     ) {
         self.presenter = presenter
@@ -53,9 +53,9 @@ struct ArticleSectionView: View {
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 12) {
-                    ForEach(presenter.articleList) { data in
-                        ArticleCardView(data: data) {
-                            print("[devex] tap article card")
+                    ForEach(presenter.courseList) { data in
+                        CourseCardView(data: data) {
+                            print("[devex] tap course card")
                         }
                         .frame(width: cardWidth)
                     }
@@ -69,12 +69,12 @@ struct ArticleSectionView: View {
 
 #Preview {
     ScrollView(.vertical) {
-        ArticleSectionView(
-            presenter: ArticleSectionPresenter(),
-            interactor: ArticleSectionInteractor(
+        CourseSectionView(
+            presenter: CourseSectionPresenter(),
+            interactor: CourseSectionInteractor(
                 model: .init(),
-                presenter: ArticleSectionPresenter(),
-                articleRepo: MockArticleRepository()),
+                presenter: CourseSectionPresenter(),
+                courseRepo: MockCourseRepository()),
             router: Router(parent: nil)
         )
         .padding(.vertical, 80)

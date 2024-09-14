@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct ArticleCardData {
+struct ArticleCardData: Identifiable {
+    let id: Int
     let model: ArticleModel
 
     let title: String
@@ -22,7 +23,8 @@ struct ArticleCardData {
     let price: String?
     let originalPrice: String?
 
-    init(model: ArticleModel) {
+    init(id: Int, model: ArticleModel) {
+        self.id = id
         self.model = model
         self.title = model.title
         self.description = model.descripton
@@ -55,6 +57,12 @@ struct ArticleCardView: View {
     private let data: ArticleCardData
     private let pressAction: () -> Void
 
+    // MARK: - Init
+    init(data: ArticleCardData, pressAction: @escaping () -> Void) {
+        self.data = data
+        self.pressAction = pressAction
+    }
+
     // MARK: - Text Style
     private var titleTextStyle: TextStyler { TextStyler(
         font: theme.font.h4.bold,
@@ -72,12 +80,6 @@ struct ArticleCardView: View {
         font: theme.font.body2.regular,
         color: theme.color.body1
     )}
-
-    // MARK: - Init
-    init(data: ArticleCardData, pressAction: @escaping () -> Void) {
-        self.data = data
-        self.pressAction = pressAction
-    }
 
     // MARK: - UI Body
     var body: some View {
@@ -196,11 +198,11 @@ struct ArticleCardView: View {
                 engagement: .init(liked: 9860, disLiked: 20, comment: 123),
                 price: .init()
             )
-            ArticleCardView(data: .init(model: mock), pressAction: {})
+            ArticleCardView(data: .init(id: 0, model: mock), pressAction: {})
                 .frame(width: 320)
-            ArticleCardView(data: .init(model: mock), pressAction: {})
+            ArticleCardView(data: .init(id: 1, model: mock), pressAction: {})
                 .frame(width: 320)
-            ArticleCardView(data: .init(model: mock), pressAction: {})
+            ArticleCardView(data: .init(id: 2, model: mock), pressAction: {})
                 .frame(width: 320)
         }
         .padding(12)

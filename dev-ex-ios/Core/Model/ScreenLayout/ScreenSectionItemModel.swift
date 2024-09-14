@@ -9,7 +9,6 @@ import Foundation
 
 struct ScreenSectionItemModel {
     var type: ScreenSectionType
-    var model: ScreenSectionModel
     var presenter: AnyObject?
     var interactor: AnyObject?
 }
