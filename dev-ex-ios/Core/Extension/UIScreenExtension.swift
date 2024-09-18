@@ -12,12 +12,20 @@ extension UIScreen {
         UIWindow.current?.windowScene?.screen
     }
 
-    func screenWidth() -> CGFloat {
+    func deviceWidth() -> CGFloat {
         return min(bounds.width, bounds.height)
     }
 
-    func screenHeight() -> CGFloat {
+    func deviceHeight() -> CGFloat {
         return max(bounds.width, bounds.height)
+    }
+
+    func screenWidth() -> CGFloat {
+        return bounds.width
+    }
+
+    func screenHeight() -> CGFloat {
+        return bounds.height
     }
 }
 
@@ -29,9 +37,7 @@ extension UIWindow {
     static var current: UIWindow? {
         for scene in UIApplication.shared.connectedScenes {
             guard let windowScene = scene as? UIWindowScene else { continue }
-            for window in windowScene.windows {
-                if window.isKeyWindow { return window }
-            }
+            return windowScene.windows.first(where: { $0.isKeyWindow })
         }
         return nil
     }

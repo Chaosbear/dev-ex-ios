@@ -33,13 +33,13 @@ class Router: ObservableObject, RouterProtocol {
 
     /// Used to programatically control navigation stack
     @Published var path: NavigationPath = NavigationPath()
+
     /// Used to present a view using a sheet
     var presentingSheet: Route?
     /// Used to present a view using a full screen cover
     var presentingFullScreenCover: Route?
     /// Used for access parent Router instances to dissmiss or navigate to other view
-    weak var parent: Router?
-
+    private weak var parent: Router?
 
     // MARK: - Life Cycle
     init(parent: Router?) {
@@ -92,7 +92,7 @@ class Router: ObservableObject, RouterProtocol {
         self.presentingSheet = route
     }
 
-    // Used to present a screen using a full screen cover
+    /// Used to present a screen using a full screen cover
     func presentFullScreen(_ route: Route) {
         self.presentingFullScreenCover = route
     }
@@ -103,32 +103,18 @@ extension Router {
     @ViewBuilder
     func view(for route: Route, type: NavigationType) -> some View {
         switch route {
-        case .viewA:
-            VStack {
-                Text("A")
-            }
-        case .viewB(let text):
-            VStack(alignment: .center, spacing: 0) {
-                NavBarView(
-                    title:"\(text) Screen",
-                    hasBackBtn: true,
-                    router: Router.main
-                )
-                VStack(alignment: .center, spacing: 12) {
-                    Text(text)
-                    Text("<< back")
-                        .asButton {
-                            Router.main.navigateBack()
-                        }
-                }
-                .frameExpand(alignment: .center)
-                .background(Color.brown.opacity(0.2))
-            }
-            .toolbar(.hidden, for: .navigationBar)
-        case .viewC:
-            VStack {
-                Text("A")
-            }
+        case .profile(let args):
+            ProfileView.view(args)
+        case .authorProfile(let args):
+            AuthorProfileView.view(args)
+        case .article(let args):
+            ArticleView.view(args)
+        case .course(let args):
+            CourseView.view(args)
+        case .setting(let args):
+            SettingView.view(args)
+        case .themeSetting(let args):
+            ThemeSettingView.view(args)
         }
     }
 }

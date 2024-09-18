@@ -9,15 +9,15 @@ import SwiftUI
 import SwiftData
 
 @main
-struct dev_ex_iosApp: App {
+struct DevExIosApp: App {
     // MARK: - Property
     // appDelegate adapter
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     // theme
     @StateObject var theme = ThemeState(
-        font: defaultFontTheme(),
-        color: defaultColorTheme()
+        font: DefaultFontTheme(),
+        color: DefaultColorTheme()
     )
 
     // router
@@ -26,7 +26,6 @@ struct dev_ex_iosApp: App {
     // other
     @State private var isLaunching = true
 
-
     // MARK: - UI Body
     var body: some Scene {
         WindowGroup {
@@ -34,13 +33,13 @@ struct dev_ex_iosApp: App {
                 LaunchScreenView()
                     .transition(.opacity.animation(.default))
                     .onViewDidLoad {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                             isLaunching = false
                         }
                     }
             } else {
                 RouterView(router: mainRouter) {
-                    RootView()
+                    RootView.view()
                 }
                 .transition(.opacity.animation(.default))
                 .environmentObject(theme)
@@ -52,7 +51,14 @@ struct dev_ex_iosApp: App {
 
 // MARK: - App Delegate
 class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+
+        configure()
+
         return true
+    }
+
+    func configure() {
+        NWMonitor.shared.startMonitoring()
     }
 }

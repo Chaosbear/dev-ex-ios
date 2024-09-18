@@ -1,13 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    ":" : {
+
+    },
+    "(%@)" : {
+
+    },
     "%@" : {
 
     },
-    "<< back" : {
-
-    },
-    "A" : {
+    "+" : {
 
     },
     "Add Item" : {
@@ -27,6 +30,24 @@
         }
       }
     },
+    "ArticleView %lld" : {
+
+    },
+    "AuthorProfileView %lld" : {
+
+    },
+    "Count %lld" : {
+
+    },
+    "CourseView %lld" : {
+
+    },
+    "Hex %lld" : {
+
+    },
+    "Home" : {
+
+    },
     "Item at %@" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -43,6 +64,18 @@
           }
         }
       }
+    },
+    "Library %lld" : {
+
+    },
+    "Notification %lld" : {
+
+    },
+    "ProfileView %lld" : {
+
+    },
+    "Search %lld" : {
+
     },
     "Select an item" : {
       "extractionState" : "stale",
@@ -61,7 +94,10 @@
         }
       }
     },
-    "View %lld" : {
+    "SettingView %lld" : {
+
+    },
+    "ThemeSettingView %lld" : {
 
     }
   },
